@@ -63,7 +63,7 @@ def loadingGame():
     Otherwise idk how to do it lmao
     """
 
-    for i in range(0,50):
+    for i in range(0,150):
 
         #As usual, check for player events
         for event in pygame.event.get():
@@ -123,7 +123,7 @@ def credits():
         screen.fill((0,0,0))
 
         #Blit the image of player onto the screen
-        screen.blit(characterImage, (60,200))
+        screen.blit(characterImage, (40,230))
 
         """
         Below defines the drawing text for the credits/tutorial part. Since we already have our function draw_text above, we just call it
@@ -132,17 +132,17 @@ def credits():
 
         draw_text('Get Hacked! Is a python pygame based video game created by Jason, Deji, and Davis.', pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 80)
 
-        draw_text('This was made for the CPSC 329 class.', pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 100)
+        draw_text('This was made for the CPSC 329 class.', pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 110)
 
-        draw_text('The goal of this game is to run through and fight the bosses!', pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 120)
+        draw_text('The goal of this game is to run through and fight the bosses!', pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 140)
 
-        draw_text('To defeat the bosses, answer the questions and get it right!', pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 140)
+        draw_text('To defeat the bosses, answer the questions and get it right!', pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 170)
 
-        draw_text("You can press escape in the game to pause and quit to main menu", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 160)
+        draw_text("You can press escape in the game to pause and quit to main menu", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 200)
 
-        draw_text("This is your character! He wants to learn about cybersecurity to protect himself", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 300)
+        draw_text("This is your character! He wants to learn about cybersecurity to protect himself", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 320)
 
-        draw_text("Use WASD to move your character, and use the mouse button to interact with the questions!", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 320)
+        draw_text("Use WASD to move your character, and use the mouse button to interact with the questions!", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 350)
 
         """
         mx and my are where are mouse variables are. 
@@ -259,7 +259,7 @@ def mainMenu():
             If it is, then we highlight the button, by drawing it a lighter color, and then draw the same text!
             """
             pygame.draw.rect(screen, (76, 122, 108), buttonStart)
-            draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 55, 115)
+            draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 59, 115)
 
             if click:
 
@@ -275,7 +275,7 @@ def mainMenu():
 
         else:
             pygame.draw.rect(screen, (136, 242, 210), buttonStart)
-            draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 55, 115)
+            draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 59, 115)
 
         """
         Same as above for the start button!
@@ -285,7 +285,7 @@ def mainMenu():
         if buttonCredits.collidepoint((mx,my)):
 
             pygame.draw.rect(screen, (76, 122, 108), buttonCredits)
-            draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 45, 215)
+            draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 43, 215)
 
             if click:
                     
@@ -294,7 +294,7 @@ def mainMenu():
         else:
 
             pygame.draw.rect(screen, (136, 242, 210), buttonCredits)
-            draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 45, 215)
+            draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 43, 215)
 
         #Initialize the click variable to be false
         click = False
