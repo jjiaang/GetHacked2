@@ -259,7 +259,7 @@ def mainMenu():
             If it is, then we highlight the button, by drawing it a lighter color, and then draw the same text!
             """
             pygame.draw.rect(screen, (76, 122, 108), buttonStart)
-            draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 55, 115)
+            draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 59, 115)
 
             if click:
 
@@ -275,7 +275,7 @@ def mainMenu():
 
         else:
             pygame.draw.rect(screen, (136, 242, 210), buttonStart)
-            draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 55, 115)
+            draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 59, 115)
 
         """
         Same as above for the start button!
@@ -285,7 +285,7 @@ def mainMenu():
         if buttonCredits.collidepoint((mx,my)):
 
             pygame.draw.rect(screen, (76, 122, 108), buttonCredits)
-            draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 45, 215)
+            draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 43, 215)
 
             if click:
                     
@@ -294,7 +294,7 @@ def mainMenu():
         else:
 
             pygame.draw.rect(screen, (136, 242, 210), buttonCredits)
-            draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 45, 215)
+            draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 43, 215)
 
         #Initialize the click variable to be false
         click = False
