@@ -121,13 +121,13 @@ def mainMenu():
         """
         mx, my = pygame.mouse.get_pos()
 
-        buttonOne = pygame.Rect(50,100,200,50)
-        buttonTwo = pygame.Rect(50,200,200,50)
+        buttonOne = pygame.Rect(20,100,180,50)
+        buttonTwo = pygame.Rect(20,200,180,50)
 
         if buttonOne.collidepoint((mx,my)):
 
             pygame.draw.rect(screen, (76, 122, 108), buttonOne)
-            draw_text('Play Game', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 80, 115)
+            draw_text('Play Game', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 55, 115)
 
             if click:
 
@@ -136,12 +136,12 @@ def mainMenu():
 
         else:
             pygame.draw.rect(screen, (136, 242, 210), buttonOne)
-            draw_text('Play Game', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 80, 115)
+            draw_text('Play Game', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 55, 115)
 
         if buttonTwo.collidepoint((mx,my)):
 
             pygame.draw.rect(screen, (76, 122, 108), buttonTwo)
-            draw_text('Tutorial/Credits', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 70, 215)
+            draw_text('Tutorial/Credits', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 30, 215)
 
             if click:
                     
@@ -150,7 +150,7 @@ def mainMenu():
         else:
 
             pygame.draw.rect(screen, (136, 242, 210), buttonTwo)
-            draw_text('Tutorial/Credits', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 70, 215)
+            draw_text('Tutorial/Credits', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 30, 215)
 
         click = False
 
