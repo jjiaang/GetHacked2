@@ -31,12 +31,17 @@ As well as explaining the game.
 """
 def credits():
 
+    # Initialize our running variable to be true, if we were to exit, this is set to false
     running = True
     
     while running:
 
+        #Fill the default screen to black, will be changed later
         screen.fill((0,0,0))
 
+        """
+        Below defines the drawing text for the credits/tutorial part. Since we already have our function draw_text above, we just call it
+        """
         draw_text('Tutorial and Credits/ How to play?', pygame.font.SysFont(None, 40), (255, 255, 255), screen, 20, 20)
 
         draw_text('Get Hacked! Is a python pygame based video game created by Jason, Deji, and Davis.', pygame.font.SysFont(None, 20), (255, 255, 255), screen, 20, 60)
@@ -47,6 +52,9 @@ def credits():
 
         draw_text('To defeat the bosses, answer the questions and get it right!', pygame.font.SysFont(None, 20), (255, 255, 255), screen, 20, 120)
 
+        """
+        Check for events, if we exit, then we want to quit out of the game. Print quit in console to confirm it works
+        """
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
@@ -55,6 +63,11 @@ def credits():
                 sys.exit()
                 print("quit")
 
+            """
+            If we press escape, then we set the running variable to false
+
+            We then exit out of this screen, and go back to the main menu screen
+            """
             if event.type == pygame.KEYDOWN:
 
                 if event.key == pygame.K_ESCAPE:
@@ -89,7 +102,9 @@ def mainMenu():
         #Draw the Main Menu Text for GetHacked!
         draw_text('Get Hacked!', pygame.font.SysFont(None, 40), (255, 255, 255), screen, 20, 20)
 
-
+        """
+        mx and my are where are mouse variables are. 
+        """
         mx, my = pygame.mouse.get_pos()
 
         buttonOne = pygame.Rect(50,100,200,50)
@@ -97,20 +112,30 @@ def mainMenu():
 
         if buttonOne.collidepoint((mx,my)):
 
+            pygame.draw.rect(screen, (76, 122, 108), buttonOne)
+            draw_text('Play Game', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 80, 115)
+
             if click:
 
                 startGame()
 
-        elif buttonTwo.collidepoint((mx,my)):
+        else:
+            pygame.draw.rect(screen, (136, 242, 210), buttonOne)
+            draw_text('Play Game', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 80, 115)
 
-                if click:
-                        
-                    credits()
+        if buttonTwo.collidepoint((mx,my)):
 
-        pygame.draw.rect(screen, (255,255,255), buttonOne)
-        draw_text('Play Game', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 80, 115)
-        pygame.draw.rect(screen, (255,255,255), buttonTwo)
-        draw_text('Tutorial/Credits', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 70, 215)
+            pygame.draw.rect(screen, (76, 122, 108), buttonTwo)
+            draw_text('Tutorial/Credits', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 70, 215)
+
+            if click:
+                    
+                credits()
+        
+        else:
+
+            pygame.draw.rect(screen, (136, 242, 210), buttonTwo)
+            draw_text('Tutorial/Credits', pygame.font.SysFont(None, 30), (0, 0, 0), screen, 70, 215)
 
         click = False
 
