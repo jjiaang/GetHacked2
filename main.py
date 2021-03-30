@@ -24,6 +24,16 @@ def draw_text(text, font, color, surface, x, y):
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
 
+#Code used from Tech with Tim
+def fade(): 
+    fade = pygame.Surface((config.SCREEN_WIDTH, config.SCREEN_HEIGHT))
+    fade.fill((0,0,0))
+    for alpha in range(0, 150):
+        fade.set_alpha(alpha)
+        screen.blit(fade, (0,0))
+        pygame.display.update()
+        pygame.time.delay(10)
+
 """
 Defines the credits for the game. Gives credits to the creators
 
@@ -87,6 +97,9 @@ Because in each loop, we have a loop. If we press escape inside one of those loo
 """
 def mainMenu():
 
+    #Get the image from the imgs folder for the background
+    backGround = pygame.image.load("imgs/menuBackground.png")
+
     """
     We set click to false. The click boolean is to detect whether something has been clicked or not.
     """
@@ -97,7 +110,8 @@ def mainMenu():
     """
     while True:
 
-        screen.fill((0,0,0))
+        #Set the background
+        screen.blit(backGround,(0,0))
 
         #Draw the Main Menu Text for GetHacked!
         draw_text('Get Hacked!', pygame.font.SysFont(None, 40), (255, 255, 255), screen, 20, 20)
@@ -117,6 +131,7 @@ def mainMenu():
 
             if click:
 
+                fade()
                 startGame()
 
         else:
