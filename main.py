@@ -256,7 +256,7 @@ def mainMenu():
             """
             This section is for if the mouse is hovering over the start button
 
-            If it is, then we highlight the button, by drawing it a lighter color, and then draw the same text
+            If it is, then we highlight the button, by drawing it a lighter color, and then draw the same text!
             """
             pygame.draw.rect(screen, (76, 122, 108), buttonStart)
             draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 55, 115)
