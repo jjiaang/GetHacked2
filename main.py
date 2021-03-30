@@ -10,10 +10,13 @@ First we initialize pygame and set up the clock. Then we set up the caption as w
 """
 pygame.init()
 
+#Set up the screen
 screen = pygame.display.set_mode((config.SCREEN_WIDTH, config.SCREEN_HEIGHT))
 
-pygame.display.set_caption("Pokemon Clone")
+#Set up the name for the border of the application
+pygame.display.set_caption("Get Hacked!")
 
+#Set up the clock
 clock = pygame.time.Clock()
  
 #This is for drawing the text. A function taken from online
@@ -26,11 +29,15 @@ def draw_text(text, font, color, surface, x, y):
 
 #Code used from Tech with Tim
 #Most times, font will be Arial
+
 def fadeOut(): 
 
     fade = pygame.Surface((config.SCREEN_WIDTH, config.SCREEN_HEIGHT))
     fade.fill((0,0,0))
 
+    """
+    A for loop, to change the alpha of the screen over time
+    """
     for alpha in range(0, 60):
 
         fade.set_alpha(alpha)
@@ -61,28 +68,33 @@ def loadingGame():
         #As usual, check for player events
         for event in pygame.event.get():
 
+            #If we detect that a player has pressed the x button, we quit the application
             if event.type == pygame.QUIT:
 
                 pygame.quit()
                 sys.exit()
                 print("quit")
 
+        #Draw the text for loading the game
         draw_text("Loading Game...", pygame.font.SysFont("Arial", 70), (255, 255, 255), screen, 80, 200)
 
     """
     Deals with the fading out of the screen.
     """
+
     for alpha in range(0, 40):
 
         #As usual, check for player events
         for event in pygame.event.get():
 
+            #If we detect that a player has pressed the x button, we quit the application
             if event.type == pygame.QUIT:
 
                 pygame.quit()
                 sys.exit()
                 print("quit")
 
+        #Set the alpha, and put the alpha on the screen so it has the fade
         loadingScreen.set_alpha(alpha)
         screen.blit(loadingScreen, (0,0))
         pygame.display.update()
@@ -95,13 +107,16 @@ As well as explaining the game.
 """
 def credits():
 
+    #Initialize the mouseClicked variable (which is click) to be false
     click = False
 
     # Initialize our running variable to be true, if we were to exit, this is set to false
     running = True
 
+    #Load the character image from the folder imgs
     characterImage = pygame.image.load("imgs/player.png")
     
+    #Main for loop for the options
     while running:
 
         #Fill the default screen to black, will be changed later
@@ -134,21 +149,27 @@ def credits():
         """
         mx, my = pygame.mouse.get_pos()
 
+        #Set up the button for the back button. 
         buttonBack = pygame.Rect(580,445,50,25)
 
+        #Now, if we detect that our mouse if hovering over the position of the back button
         if buttonBack.collidepoint((mx,my)):
 
+            #We first draw the text for back, and if its hovering over, then we will make the button darker as a highlight
             pygame.draw.rect(screen, (76, 122, 108), buttonBack)
             draw_text('Back', pygame.font.SysFont("Arial", 17), (0, 0, 0), screen, 587, 448)
 
+            #If we click the back button, we exit outta that biotch
             if click:
 
                 running = False
 
+        #Else, we keep the button the default color. (No highlight)
         else:
             pygame.draw.rect(screen, (136, 242, 210), buttonBack)
             draw_text('Back', pygame.font.SysFont("Arial", 17), (0, 0, 0), screen, 587, 448)
 
+        #Initialize the click variable to be false again.
         click = False
 
         """
@@ -179,6 +200,7 @@ def credits():
                     
                     click = True
 
+        #Update the screen!
         pygame.display.update()
         clock.tick(60)
 
@@ -216,15 +238,36 @@ def mainMenu():
         """
         mx, my = pygame.mouse.get_pos()
 
+        """
+        We initialize the start and credits button, to their respective x and y positions on the screen
+
+        pygame.rect(xPos,yPos,Width,Height) is the format
+        """
         buttonStart = pygame.Rect(20,100,180,50)
         buttonCredits = pygame.Rect(20,200,180,50)
 
+        """
+        This section is for detecting if our mouse is hovering over the buttons
+
+        If it is, we run the respective codes
+        """
         if buttonStart.collidepoint((mx,my)):
 
+            """
+            This section is for if the mouse is hovering over the start button
+
+            If it is, then we highlight the button, by drawing it a lighter color, and then draw the same text
+            """
             pygame.draw.rect(screen, (76, 122, 108), buttonStart)
             draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 55, 115)
 
             if click:
+
+                """
+                If we click on the start button, then we fade out, load the game, and start the game
+
+                otherwise we go to else, which is just not highlighting the button, and same text
+                """
 
                 fadeOut()
                 loadingGame()
@@ -234,6 +277,11 @@ def mainMenu():
             pygame.draw.rect(screen, (136, 242, 210), buttonStart)
             draw_text('Play Game', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 55, 115)
 
+        """
+        Same as above for the start button!
+
+        We do and follow the same procedure
+        """
         if buttonCredits.collidepoint((mx,my)):
 
             pygame.draw.rect(screen, (76, 122, 108), buttonCredits)
@@ -248,22 +296,33 @@ def mainMenu():
             pygame.draw.rect(screen, (136, 242, 210), buttonCredits)
             draw_text('Tutorial/Credits', pygame.font.SysFont("Arial", 20), (0, 0, 0), screen, 45, 215)
 
+        #Initialize the click variable to be false
         click = False
 
+        """
+        This for loop is to check for events. We use a for loop because there can be events in the queue and we wanna get all of em
+        """
         for event in pygame.event.get():
+            
+            """
+            If we quit, then we exit outta pygame
 
+            lata biotch
+            """
             if event.type == pygame.QUIT:
 
                 pygame.quit()
                 sys.exit()
                 print("quit")
 
+            #Otherwise if we click our mouse, then click becomes true
             if event.type == pygame.MOUSEBUTTONDOWN:
 
                 if event.button == 1:
                     
                     click = True
 
+        #Update and display the screen
         pygame.display.update()
         clock.tick(60)
         
