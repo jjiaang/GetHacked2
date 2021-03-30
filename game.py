@@ -41,19 +41,29 @@ class Game:
         for object in self.objects:
             object.render(self.screen, self.camera)
 
+    """
+    A function that handles events. Handles events such as if we quit, escape, move up down side, etc
+    """
     def handle_events(self):
 
+        """
+        A for loop for detecting events
+
+        Because we see that there can be multiple events
+        """
         for event in pygame.event.get():
 
+            #If we quit/ press the X button, then we quit and exit the game
             if event.type == pygame.QUIT:
 
                 self.game_state = GameState.ENDED
                 pygame.quit()
                 sys.exit()
 
-            #     handle key events
+            #Handle key pressing events
             elif event.type == pygame.KEYDOWN:
 
+                #Handles the escape button
                 if event.key == pygame.K_ESCAPE:
 
                     self.game_state = GameState.ENDED
@@ -74,6 +84,9 @@ class Game:
 
                     self.move_unit(self.player, [1, 0])
 
+    """
+    This function is for loading the map and creating it.
+    """
     def load_map(self, file_name):
 
         with open('maps/' + file_name + ".txt") as map_file:
@@ -90,6 +103,9 @@ class Game:
 
             print(self.map)
 
+    """
+    This function is for rendering the map
+    """
     def render_map(self, screen):
 
         self.determine_camera()
@@ -109,6 +125,9 @@ class Game:
 
             y_pos = y_pos + 1
 
+    """
+    This function is for moving the player
+    """
     def move_unit(self, unit, position_change):
 
         new_position = [unit.position[0] + position_change[0], unit.position[1] + position_change[1]]
@@ -146,5 +165,5 @@ map_tile_image = {
 
     "G" : pygame.transform.scale(pygame.image.load("imgs/grass1.png"), (config.SCALE, config.SCALE)),
     "W": pygame.transform.scale(pygame.image.load("imgs/water.png"), (config.SCALE, config.SCALE))
-    
+
 }
