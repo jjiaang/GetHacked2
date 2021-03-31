@@ -122,7 +122,7 @@ def credits():
         #Fill the default screen to black, will be changed later
         screen.fill((0,0,0))
 
-        #Blit the image of player onto the screen
+        #Blit the image of player onto the screend
         screen.blit(characterImage, (40,230))
 
         """
