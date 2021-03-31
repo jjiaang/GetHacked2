@@ -70,27 +70,28 @@ class Game:
 
                 elif event.key == pygame.K_w: # up
 
-                    playerUp = pygame.image.load("imgs/character/tile006.png")
-                    self.player.image = pygame.transform.scale(playerUp, (config.SCALE, config.SCALE))
+                    playerMovement = self.player.updateWalk("UP")
+                    self.player.image = pygame.transform.scale(playerMovement, (config.SCALE, config.SCALE))
                     self.move_unit(self.player, [0, -1])
 
                 elif event.key == pygame.K_s: # down
 
-                    playerDown = pygame.image.load("imgs/character/tile001.png")
-                    self.player.image = pygame.transform.scale(playerDown, (config.SCALE, config.SCALE))
+                    playerMovement = self.player.updateWalk("DOWN")
+
+                    self.player.image = pygame.transform.scale(playerMovement, (config.SCALE, config.SCALE))
                     self.move_unit(self.player, [0, 1])
 
                 elif event.key == pygame.K_a: # left
 
-                    playerDown = pygame.image.load("imgs/character/tile011.png")
-                    self.player.image = pygame.transform.scale(playerDown, (config.SCALE, config.SCALE))
+                    playerMovement = self.player.updateWalk("LEFT")
+                    self.player.image = pygame.transform.scale(playerMovement, (config.SCALE, config.SCALE))
 
                     self.move_unit(self.player, [-1, 0])
 
                 elif event.key == pygame.K_d: # right
 
-                    playerDown = pygame.image.load("imgs/character/tile015.png")
-                    self.player.image = pygame.transform.scale(playerDown, (config.SCALE, config.SCALE))
+                    playerMovement = self.player.updateWalk("RIGHT")
+                    self.player.image = pygame.transform.scale(playerMovement, (config.SCALE, config.SCALE))
 
                     self.move_unit(self.player, [1, 0])
 
