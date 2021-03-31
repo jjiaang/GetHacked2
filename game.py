@@ -160,6 +160,10 @@ class Game:
     Player position is based on each tile, so it is a one dimensional array, with position[0] being X and position[1] being Y
 
     Meanwhile, we know that the map is a 2d array, with map[0][z] being the first row, zth column, and vice versa
+
+    X position for the player refers to the column the player is on, while the Y position is the row
+
+    If a player is at position X Y, then the corresponding map entry would be map[Y][X]
     """
     def move_unit(self, unit, position_change):
 
