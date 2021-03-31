@@ -114,7 +114,7 @@ def credits():
     running = True
 
     #Load the character image from the folder imgs
-    characterImage = pygame.image.load("imgs/player.png")
+    characterImage = pygame.image.load("imgs/character/tile000.png")
     
     #Main for loop for the options
     while running:
