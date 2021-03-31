@@ -35,12 +35,29 @@ class Game:
     def update(self):
         self.screen.fill(config.BLACK)
         self.handle_events()
-        self.detectBoss()
 
         self.render_map(self.screen)
 
         for object in self.objects:
             object.render(self.screen, self.camera)
+
+    """
+    Detect if the player is at the correct position in front of the boss
+
+    We also have to check if its in the range of the map
+    """
+    def detectBoss(self):
+        print(self.player.position)
+
+        if (self.player.position[0] - 1 < 0 or self.player.position[0] + 1 > (len(self.map[0]) - 1)):
+            return False
+
+        if self.player.position[0] - 1 < 0 or self.player.position[0] > (len(self.map) - 1):
+            return False
+        
+        if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'A'):
+            print(self.map[self.player.position[1]][self.player.position[0]])
+            return True
 
     """
     A function that handles events. Handles events such as if we quit, escape, move up down side, etc
@@ -95,6 +112,11 @@ class Game:
                     self.player.image = pygame.transform.scale(playerMovement, (config.SCALE, config.SCALE))
 
                     self.move_unit(self.player, [1, 0])
+                
+                elif event.key == pygame.K_SPACE: #Spacebar for boss
+
+                    if self.detectBoss():
+                        print("Ok")
 
     """
     This function is for loading the map and creating it.
@@ -123,9 +145,6 @@ class Game:
             
             #Print the map to the console for testing
             print(self.map)
-
-    def detectBoss(self):
-        print(self.player.position)
 
     """
     This function is for rendering the map
