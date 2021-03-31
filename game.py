@@ -70,17 +70,27 @@ class Game:
 
                 elif event.key == pygame.K_w: # up
 
+                    playerUp = pygame.image.load("imgs/character/tile006.png")
+                    self.player.image = pygame.transform.scale(playerUp, (config.SCALE, config.SCALE))
                     self.move_unit(self.player, [0, -1])
 
                 elif event.key == pygame.K_s: # down
 
+                    playerDown = pygame.image.load("imgs/character/tile001.png")
+                    self.player.image = pygame.transform.scale(playerDown, (config.SCALE, config.SCALE))
                     self.move_unit(self.player, [0, 1])
 
-                elif event.key == pygame.K_a: # up
+                elif event.key == pygame.K_a: # left
+
+                    playerDown = pygame.image.load("imgs/character/tile011.png")
+                    self.player.image = pygame.transform.scale(playerDown, (config.SCALE, config.SCALE))
 
                     self.move_unit(self.player, [-1, 0])
 
-                elif event.key == pygame.K_d: # up
+                elif event.key == pygame.K_d: # right
+
+                    playerDown = pygame.image.load("imgs/character/tile015.png")
+                    self.player.image = pygame.transform.scale(playerDown, (config.SCALE, config.SCALE))
 
                     self.move_unit(self.player, [1, 0])
 
@@ -89,18 +99,27 @@ class Game:
     """
     def load_map(self, file_name):
 
+        """
+        Our maps are shown a text file
+
+        So basically, the layout of the map will be in the format of a text file
+        """
         with open('maps/' + file_name + ".txt") as map_file:
 
+            #Iterate through each line
             for line in map_file:
 
                 tiles = []
 
+                #Iterate through each entry of each line
                 for i in range(0, len(line) - 1, 2):
 
+                    #Append the selected map description to the tile array
                     tiles.append(line[i])
 
                 self.map.append(tiles)
-
+            
+            #Print the map to the console for testing
             print(self.map)
 
     """
@@ -108,18 +127,23 @@ class Game:
     """
     def render_map(self, screen):
 
+        #Determine where the camera should be first
         self.determine_camera()
 
         y_pos = 0
 
+        #Go through the grid line by line
         for line in self.map:
 
             x_pos = 0
 
+            #Go through each individual tile
             for tile in line:
 
+                #Find the corresponding thing to go with, for example G for grass, W for water
                 image = map_tile_image[tile]
                 rect = pygame.Rect(x_pos * config.SCALE, y_pos * config.SCALE - (self.camera[1] * config.SCALE), config.SCALE, config.SCALE)
+                #Draw the image onto the rectangle (the map tiles)
                 screen.blit(image, rect)
                 x_pos = x_pos + 1
 
@@ -143,6 +167,9 @@ class Game:
 
         unit.update_position(new_position)
 
+    """
+    This is for controlling the player camera
+    """
     def determine_camera(self):
 
         max_y_position = len(self.map) - config.SCREEN_HEIGHT / config.SCALE
@@ -161,6 +188,7 @@ class Game:
             self.camera[1] = max_y_position
 
 
+#A python dict/hashmap for the types of tiles in the game, they should be 64x64
 map_tile_image = {
 
     "G" : pygame.transform.scale(pygame.image.load("imgs/grass1.png"), (config.SCALE, config.SCALE)),
