@@ -35,6 +35,7 @@ class Game:
     def update(self):
         self.screen.fill(config.BLACK)
         self.handle_events()
+        self.detectBoss()
 
         self.render_map(self.screen)
 
@@ -123,6 +124,9 @@ class Game:
             #Print the map to the console for testing
             print(self.map)
 
+    def detectBoss(self):
+        print(self.player.position)
+
     """
     This function is for rendering the map
     """
@@ -152,6 +156,10 @@ class Game:
 
     """
     This function is for moving the player
+
+    Player position is based on each tile, so it is a one dimensional array, with position[0] being X and position[1] being Y
+
+    Meanwhile, we know that the map is a 2d array, with map[0][z] being the first row, zth column, and vice versa
     """
     def move_unit(self, unit, position_change):
 
@@ -180,6 +188,8 @@ class Game:
 
     """
     This is for controlling the player camera
+
+    If the player exceeds the maximum y position, then we move the camera
     """
     def determine_camera(self):
 
