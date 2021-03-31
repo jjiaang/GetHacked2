@@ -204,6 +204,7 @@ map_tile_image = {
 
     "G" : pygame.transform.scale(pygame.image.load("imgs/grass1.png"), (config.SCALE, config.SCALE)),
     "W": pygame.transform.scale(pygame.image.load("imgs/water.png"), (config.SCALE, config.SCALE)),
-    "A" : pygame.transform.scale(pygame.image.load("imgs/boss1Tile.png"),(config.SCALE, config.SCALE))
+    "A" : pygame.transform.scale(pygame.image.load("imgs/boss1Tile.png"),(config.SCALE, config.SCALE)),
+    "R" : pygame.transform.scale(pygame.image.load("imgs/rock1Tile.png"),(config.SCALE, config.SCALE))
 
 }
