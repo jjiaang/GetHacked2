@@ -49,12 +49,15 @@ class Game:
     def detectBoss(self):
         print(self.player.position)
 
+        #Check to see if the x value is out of bounds
         if (self.player.position[0] - 1 < 0 or self.player.position[0] + 1 > (len(self.map[0]) - 1)):
             return False
 
+        #Check to see if the y value is out of bounds
         if self.player.position[0] - 1 < 0 or self.player.position[0] > (len(self.map) - 1):
             return False
         
+        #If they are not out of bounds, then we return true if we detected a boss
         if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'A'):
             print(self.map[self.player.position[1]][self.player.position[0]])
             return True
