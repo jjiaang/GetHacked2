@@ -37,6 +37,10 @@ class Player:
 
         if direction == "DOWN":
 
+            self.walkUpCount = 0
+            self.walkLeftCount = 0
+            self.walkRightCount = 0
+
             if (self.walkDownCount == 0):
 
                     playerImageLoad = pygame.image.load("imgs/character/tile001.png")
@@ -62,6 +66,10 @@ class Player:
                 self.walkDownCount = 0
 
         elif direction == "UP":
+
+            self.walkDownCount = 0
+            self.walkLeftCount = 0
+            self.walkRightCount = 0
 
             if (self.walkUpCount == 0):
 
@@ -89,6 +97,10 @@ class Player:
 
         elif direction == "RIGHT":
 
+            self.walkDownCount = 0
+            self.walkUpCount = 0
+            self.walkLeftCount = 0
+
             if (self.walkRightCount == 0):
 
                 playerImageLoad = pygame.image.load("imgs/character/tile016.png")
@@ -114,6 +126,10 @@ class Player:
                 self.walkRightCount = 0
 
         elif direction == "LEFT":
+
+            self.walkDownCount = 0
+            self.walkUpCount = 0
+            self.walkRightCount = 0
 
             if (self.walkLeftCount == 0):
 
