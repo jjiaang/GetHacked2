@@ -57,8 +57,16 @@ class Game:
         if self.player.position[0] - 1 < 0 or self.player.position[0] > (len(self.map) - 1):
             return False
         
-        #If they are not out of bounds, then we return true if we detected a boss
-        if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'A'):
+        """
+        If they are not out of bounds, then we return true if we detected a boss
+
+        Then we check in a 360 radius to see if we have a boss around us
+        """
+        if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'A' or 
+        self.map[self.player.position[1]][self.player.position[0] - 1] == 'A' or 
+        self.map[self.player.position[1] + 1][self.player.position[0]] == 'A' or 
+        self.map[self.player.position[1] - 1][self.player.position[0]] == 'A'):
+        
             print(self.map[self.player.position[1]][self.player.position[0]])
             return True
 
