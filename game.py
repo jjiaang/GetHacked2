@@ -157,12 +157,20 @@ class Game:
 
         new_position = [unit.position[0] + position_change[0], unit.position[1] + position_change[1]]
 
+        """
+        Handles out of bound errors
+        """
         if new_position[0] < 0 or new_position[0] > (len(self.map[0]) - 1):
             return
 
         if new_position[1] < 0 or new_position[1] > (len(self.map) - 1):
             return
 
+        """
+        If we detect water, a rock, or a boss
+
+        We break out. Will add more later
+        """
         if (self.map[new_position[1]][new_position[0]] == "W" or self.map[new_position[1]][new_position[0]] == "A" 
         or self.map[new_position[1]][new_position[0]] == "R"):
             return
