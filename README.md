@@ -11,7 +11,7 @@ Creating a game is cool, right?
 
 ## Tech/Frameworks used
 
-Created using [Python 3](https://www.python.org/downloads/) and the [pygame](https://www.pygame.org/news) library.
+Created using [Python 3](https://www.python.org/downloads/) and the [pygame](https://www.pygame.org/news) library. Local databases implemented with JSON
 
 ## Installation
 Install [Python 3](https://www.python.org/downloads/) and install [pygame](https://www.pygame.org/news). Then download the repository onto your local machine  
