@@ -42,6 +42,35 @@ class Game:
             object.render(self.screen, self.camera)
 
     """
+    Detect if the player is at the correct position in front of the boss
+
+    We also have to check if its in the range of the map
+    """
+    def detectBoss(self):
+        print(self.player.position)
+
+        #Check to see if the x value is out of bounds
+        if (self.player.position[0] - 1 < 0 or self.player.position[0] + 1 > (len(self.map[0]) - 1)):
+            return False
+
+        #Check to see if the y value is out of bounds
+        if self.player.position[0] - 1 < 0 or self.player.position[0] > (len(self.map) - 1):
+            return False
+        
+        """
+        If they are not out of bounds, then we return true if we detected a boss
+
+        Then we check in a 360 radius to see if we have a boss around us
+        """
+        if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'A' or 
+        self.map[self.player.position[1]][self.player.position[0] - 1] == 'A' or 
+        self.map[self.player.position[1] + 1][self.player.position[0]] == 'A' or 
+        self.map[self.player.position[1] - 1][self.player.position[0]] == 'A'):
+        
+            print(self.map[self.player.position[1]][self.player.position[0]])
+            return True
+
+    """
     A function that handles events. Handles events such as if we quit, escape, move up down side, etc
     """
     def handle_events(self):
@@ -94,6 +123,11 @@ class Game:
                     self.player.image = pygame.transform.scale(playerMovement, (config.SCALE, config.SCALE))
 
                     self.move_unit(self.player, [1, 0])
+                
+                elif event.key == pygame.K_SPACE: #Spacebar for boss
+
+                    if self.detectBoss():
+                        print("Ok")
 
     """
     This function is for loading the map and creating it.
@@ -152,6 +186,14 @@ class Game:
 
     """
     This function is for moving the player
+
+    Player position is based on each tile, so it is a one dimensional array, with position[0] being X and position[1] being Y
+
+    Meanwhile, we know that the map is a 2d array, with map[0][z] being the first row, zth column, and vice versa
+
+    X position for the player refers to the column the player is on, while the Y position is the row
+
+    If a player is at position X Y, then the corresponding map entry would be map[Y][X]
     """
     def move_unit(self, unit, position_change):
 
@@ -180,6 +222,8 @@ class Game:
 
     """
     This is for controlling the player camera
+
+    If the player exceeds the maximum y position, then we move the camera
     """
     def determine_camera(self):
 
