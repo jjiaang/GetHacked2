@@ -2,7 +2,7 @@
 
 Get Hacked is a pygame based video game, created for the University of Calgary's CPSC 329 (Cybersecurity) Course.
 
-![](https://i.gyazo.com/ce91a2af3b51283f1cb147ad37361ec5.png)
+![](https://i.gyazo.com/710557895cda15ea76982ea5c2aecb8d.png)
 
 ## Motivation
 
