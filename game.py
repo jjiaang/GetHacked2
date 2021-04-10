@@ -4,6 +4,7 @@ import sys
 import math
 from player import Player
 from game_state import GameState
+from quiz import Quiz
 
 """
 Define the Game class
@@ -22,6 +23,7 @@ class Game:
         self.game_state = GameState.NONE
         self.map = []
         self.camera = [0, 0]
+        self.clock = pygame.time.Clock()
 
     #This is for when we set up the game. We spawn the player in a coordinate, and then run the game
     def set_up(self):
@@ -40,6 +42,170 @@ class Game:
 
         for object in self.objects:
             object.render(self.screen, self.camera)
+
+    def draw_text(self, text, font, color, surface, x, y):
+        textobj = font.render(text, 1, color)
+        textrect = textobj.get_rect()
+        textrect.topleft = (x, y)
+        surface.blit(textobj, textrect)
+
+    def startQuizOne(self):
+
+        runningQuiz = True
+
+        click = False
+
+        score = 0
+
+        round = 1
+
+        while runningQuiz:
+
+            self.screen.fill((0, 0, 0))
+
+            #Check for events
+            for event in pygame.event.get():
+
+                #If the event is quit, then we exit
+                if event.type == pygame.QUIT:
+
+                    runningQuiz = False
+                    pygame.quit()
+                    sys.exit()
+                    print("quit")
+
+                #If we escape, return back to the game
+                if event.type == pygame.KEYDOWN:
+                    
+                    if event.key == pygame.K_ESCAPE:
+
+                        runningQuiz = False
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+
+                    if event.button == 1:
+                        
+                        click = True
+
+            """
+            mx and my are where are mouse variables are. 
+            """
+            mx, my = pygame.mouse.get_pos()
+
+            #Setting up the quiz buttons
+            buttonA = pygame.Rect(10,100,500,125)
+            buttonB = pygame.Rect(10,300,500,125)
+
+            buttonC = pygame.Rect(750,100,500,125)
+            buttonD = pygame.Rect(750,300,500,125)
+
+            if round == 1:
+                #Handling the UI for the button clicks and presses
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Falsification of data and data authentication", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Falsification of data and data authentication", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Collection of information such as passwords", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Collection of information such as passwords", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Information and messages in the system are acquired", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 750, 150)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Information and messages in the system are acquired", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 750, 150)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("System resources are not changed", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 750, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("System resources are not changed", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 750, 350)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("In cybersecurity there are two types of attacks: passive attack and active attacks. Passive attack involves eavesdropping. What involves active attack?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+            if round == 2:
+                #Handling the UI for the button clicks and presses
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("That contents have not been altered", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("That contents have not been altered", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("That the source is authentic", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("That the source is authentic", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("That time frame is the same for transmitting information ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 750, 150)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("That time frame is the same for transmitting information ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 750, 150)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("That contents have not been altered and that the source is authentic", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 750, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("That contents have not been altered and that the source is authentic", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 750, 350)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Message or data authentication is a procedure that allows communicating parties to verify that received or stored messages are authentic.", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("What are the two important aspects that needs to be verified of the contents?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+            click = False
+
+            pygame.display.update()
+            self.clock.tick(60)
 
     """
     Detect if the player is at the correct position in front of the boss
@@ -125,6 +291,8 @@ class Game:
                     self.move_unit(self.player, [1, 0])
                 
                 elif event.key == pygame.K_SPACE: #Spacebar for boss
+
+                    self.startQuizOne()
 
                     if self.detectBoss():
                         print("Ok")

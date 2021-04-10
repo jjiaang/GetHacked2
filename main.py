@@ -227,6 +227,8 @@ def mainMenu():
     """
     while True:
 
+        screen.fill((0,0,0))
+
         #Set the background
         screen.blit(backGround,(0,0))
 
@@ -269,8 +271,8 @@ def mainMenu():
                 otherwise we go to else, which is just not highlighting the button, and same text
                 """
 
-                fadeOut()
-                loadingGame()
+                #fadeOut()
+                #loadingGame()
                 startGame()
 
         else:
