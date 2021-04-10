@@ -1,34 +1,34 @@
-G G G G G G G R W G G G G G G G G G G G
-G G G G G G G R W G G G G G G G G G G G
-G G G G G G G G W G G G G G G G G G G G
-G G G G G G G G W G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G A G G
-G G G G G R G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G R G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G R G G G R G G G G G
-G G G G G G G G G G G R W W G G G G G G
-G G G G G G G G G G W W W W W G G G G G
-G G G G G G G G G G G G W W G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G R G G G G G G G
-G G G G G G G G G G G G W G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G W G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G W G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
-G G G G G G G G G G G G G G G G G G G G
+G G G G G G G R W G G G G G G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G R W G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G A G G W G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G W G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G R G G G G G G G G G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G G G G G G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G G R G G G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G G G G G G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G G G G G G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G R G G G R G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G G R W W G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G W W W W W G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G G G W W G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G G G G G G G G G G G G G G G G G G R W G G G G G G G G G G G 
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G 
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G R G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G W G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G W G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G W G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
+G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G G
