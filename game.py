@@ -96,11 +96,13 @@ class Game:
             buttonA = pygame.Rect(10,100,500,125)
             buttonB = pygame.Rect(10,300,500,125)
 
-            buttonC = pygame.Rect(750,100,500,125)
-            buttonD = pygame.Rect(750,300,500,125)
+            buttonC = pygame.Rect(10,500,500,125)
+            buttonD = pygame.Rect(10,700,500,125)
 
             if round == 1:
                 #Handling the UI for the button clicks and presses
+
+                #Correct Answer
                 if buttonA.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
@@ -109,6 +111,7 @@ class Game:
                     if click:
 
                         round += 1
+                        score += 1
 
                 else:
 
@@ -128,22 +131,22 @@ class Game:
                 if buttonC.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
-                    self.draw_text("Information and messages in the system are acquired", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 750, 150)
+                    self.draw_text("Information and messages in the system are acquired", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
-                    self.draw_text("Information and messages in the system are acquired", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 750, 150)
+                    self.draw_text("Information and messages in the system are acquired", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
 
                 if buttonD.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
-                    self.draw_text("System resources are not changed", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 750, 350)
+                    self.draw_text("System resources are not changed", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
 
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
-                    self.draw_text("System resources are not changed", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 750, 350)
+                    self.draw_text("System resources are not changed", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
 
                 #Initialize the click variable to be false again.
                 click = False
@@ -153,6 +156,12 @@ class Game:
                 self.draw_text("In cybersecurity there are two types of attacks: passive attack and active attacks. Passive attack involves eavesdropping. What involves active attack?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
 
             if round == 2:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Message or data authentication is a procedure that allows communicating parties to verify that received or stored messages are authentic. ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("What are the two important aspects that needs to be verified of the contents?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
                 #Handling the UI for the button clicks and presses
                 if buttonA.collidepoint((mx,my)):
 
@@ -177,30 +186,143 @@ class Game:
                 if buttonC.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
-                    self.draw_text("That time frame is the same for transmitting information ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 750, 150)
+                    self.draw_text("That time frame is the same for transmitting information ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
-                    self.draw_text("That time frame is the same for transmitting information ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 750, 150)
+                    self.draw_text("That time frame is the same for transmitting information ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
 
+                #Correct Answer
                 if buttonD.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
-                    self.draw_text("That contents have not been altered and that the source is authentic", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 750, 350)
+                    self.draw_text("That contents have not been altered and that the source is authentic", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        round += 1
+                        score += 1
 
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
-                    self.draw_text("That contents have not been altered and that the source is authentic", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 750, 350)
+                    self.draw_text("That contents have not been altered and that the source is authentic", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                click = False
+
+            if round == 3:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one statement about the one-way hash function used for message authentication is correct?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Accepts the same sized messages as input and produces the same sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Accepts the same sized messages as input and produces the same sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Accepts variable sized messages as input and produces a variable sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Accepts variable sized messages as input and produces a variable sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Accepts the same sized messages as input and produces a variable sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Accepts the same sized messages as input and produces a variable sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                #Correct Answer
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Accepts variable sized messages as input and produces a fixed-sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Accepts variable sized messages as input and produces a fixed-sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
 
                 #Initialize the click variable to be false again.
                 click = False
 
+            if round == 4:
+
                 #Display Text for questions
                 self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
-                self.draw_text("Message or data authentication is a procedure that allows communicating parties to verify that received or stored messages are authentic.", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
-                self.draw_text("What are the two important aspects that needs to be verified of the contents?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+                self.draw_text("What properties describe a hash function which is referred to as collision resistant or as strong collision resistant?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It is a hash function where it is computationally infeasible to find any pair (x,y) such that H(x) = H(y)", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It is a hash function where it is computationally infeasible to find any pair (x,y) such that H(x) = H(y)", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("For any given block x, it is computationally infeasible to find y is not equal to x with H(y) = H(x)", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("For any given block x, it is computationally infeasible to find y is not equal to x with H(y) = H(x)", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It is a hash function which produces the same output for all inputs", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It is a hash function which produces the same output for all inputs", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                #Correct Answer
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It is a hash function which algorithm is hard to understand despite producing the same output for different inputs", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It is a hash function which algorithm is hard to understand despite producing the same output for different inputs", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+                
 
             click = False
 
