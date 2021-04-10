@@ -24,6 +24,7 @@ class Game:
         self.map = []
         self.camera = [0, 0]
         self.clock = pygame.time.Clock()
+        self.level = 0
 
     #This is for when we set up the game. We spawn the player in a coordinate, and then run the game
     def set_up(self):
@@ -767,12 +768,18 @@ class Game:
 
                     self.move_unit(self.player, [1, 0])
                 
-                elif event.key == pygame.K_SPACE: #Spacebar for boss
-
-                    print(self.startQuizOne())
-                    
+                elif event.key == pygame.K_SPACE: #Spacebar for boss     
 
                     if self.detectBoss():
+
+                        if self.level == 0:
+                            result = self.startQuizOne()
+
+                            print(result)
+
+                            if result >= 6:
+                                self.level += 1
+
                         print("Ok")
 
     """
