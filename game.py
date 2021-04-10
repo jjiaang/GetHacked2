@@ -39,6 +39,14 @@ class Game:
         self.screen.fill(config.BLACK)
         self.handle_events()
 
+        self.map = []
+
+        if self.level == 0:
+            self.load_map("01")
+
+        if self.level == 1:
+            self.load_map("02")
+
         self.render_map(self.screen)
 
         for object in self.objects:
@@ -49,6 +57,56 @@ class Game:
         textrect = textobj.get_rect()
         textrect.topleft = (x, y)
         surface.blit(textobj, textrect)
+
+    def incorrectScreen(self,link):
+
+        runningScreen = True
+
+        click = False
+
+        while runningScreen:
+
+            self.screen.fill((0, 0, 0))
+
+            buttonNext = pygame.Rect(10,700,500,125)
+
+            mx, my = pygame.mouse.get_pos()
+
+            for event in pygame.event.get():
+                #If the event is quit, then we exit
+                if event.type == pygame.QUIT:
+
+                    runningScreen = False
+                    pygame.quit()
+                    sys.exit()
+                    print("quit")
+                
+                if event.type == pygame.MOUSEBUTTONDOWN:
+
+                    if event.button == 1:
+                        
+                        click = True
+
+            self.draw_text("Whoops! That is incorrect, here is a link to help you out", pygame.font.SysFont("Arial", 20), (255, 255, 255), self.screen, 80, 100)
+            self.draw_text(link, pygame.font.SysFont("Arial", 20), (255, 255, 255), self.screen, 80, 120)
+
+            if buttonNext.collidepoint((mx,my)):
+                pygame.draw.rect(self.screen, (82, 46, 78), buttonNext)
+                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 750)
+
+                if click:
+
+                    runningScreen = False
+
+            else:
+
+                pygame.draw.rect(self.screen, (112, 64, 107), buttonNext)
+                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 750)
+
+            click = False
+
+            pygame.display.update()
+            self.clock.tick(60)
 
     def startQuizOne(self):
 
@@ -74,13 +132,6 @@ class Game:
                     pygame.quit()
                     sys.exit()
                     print("quit")
-
-                #If we escape, return back to the game
-                if event.type == pygame.KEYDOWN:
-                    
-                    if event.key == pygame.K_ESCAPE:
-
-                        runningQuiz = False
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -124,6 +175,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
                     self.draw_text("Collection of information such as passwords", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
 
+                    if click:
+
+                        self.incorrectScreen("https://www.geeksforgeeks.org/difference-between-active-attack-and-passive-attack/")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
@@ -134,6 +191,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("Information and messages in the system are acquired", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
+                    if click:
+
+                        self.incorrectScreen("https://www.geeksforgeeks.org/difference-between-active-attack-and-passive-attack/")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
@@ -143,6 +206,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("System resources are not changed", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.geeksforgeeks.org/difference-between-active-attack-and-passive-attack/")
+
+                        round += 1
 
                 else:
 
@@ -169,6 +238,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
                     self.draw_text("That contents have not been altered", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
 
+                    if click:
+
+                        self.incorrectScreen("https://www.logsign.com/blog/what-are-authentication-protocols-in-cryptography/ ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
@@ -179,6 +254,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
                     self.draw_text("That the source is authentic", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
 
+                    if click:
+
+                        self.incorrectScreen("https://www.logsign.com/blog/what-are-authentication-protocols-in-cryptography/ ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
@@ -188,6 +269,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("That time frame is the same for transmitting information ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.logsign.com/blog/what-are-authentication-protocols-in-cryptography/ ")
+
+                        round += 1
 
                 else:
 
@@ -224,6 +311,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
                     self.draw_text("Accepts the same sized messages as input and produces the same sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
 
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Cryptographic_hash_function ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
@@ -234,6 +327,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
                     self.draw_text("Accepts variable sized messages as input and produces a variable sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
 
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Cryptographic_hash_function ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
@@ -243,6 +342,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("Accepts the same sized messages as input and produces a variable sized message digest of some fixed length", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Cryptographic_hash_function ")
+
+                        round += 1
 
                 else:
 
@@ -275,6 +380,8 @@ class Game:
                 self.draw_text("What properties describe a hash function which is referred to as collision resistant or as strong collision resistant?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
 
                 #Handling the UI for the button clicks and presses
+
+                #Correct Answer
                 if buttonA.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
@@ -295,6 +402,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
                     self.draw_text("For any given block x, it is computationally infeasible to find y is not equal to x with H(y) = H(x)", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
 
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Cryptographic_hash_function ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
@@ -305,21 +418,34 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("It is a hash function which produces the same output for all inputs", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Cryptographic_hash_function ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("It is a hash function which produces the same output for all inputs", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
 
-                #Correct Answer
                 if buttonD.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("It is a hash function which algorithm is hard to understand despite producing the same output for different inputs", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
 
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Cryptographic_hash_function ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("It is a hash function which algorithm is hard to understand despite producing the same output for different inputs", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                click = False
 
             if round == 5:
 
@@ -338,6 +464,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
                     self.draw_text("Ciphertext, 2 – Key, 3 – Compare ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Message_authentication_code ")
+
+                        round += 1
 
                 else:
 
@@ -365,6 +497,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("Ciphertext, 2 – Key, 3 – Authentication", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Message_authentication_code ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
@@ -374,6 +512,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("Message, 2 – Compare, 3 – Key", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Message_authentication_code ")
+
+                        round += 1
 
                 else:
 
@@ -418,6 +562,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
                     self.draw_text("Private, 2 – Public, 3 – Ciphertext, 4 – Decryption, 5 – Encryption", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
 
+                    if click:
+
+                        self.incorrectScreen("https://sectigo.com/resource-library/public-key-vs-private-key")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
@@ -428,6 +578,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("Public, 2 – Private, 3 – Plaintext, 4 – Decryption, 5 – Encryption", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
+                    if click:
+
+                        self.incorrectScreen("https://sectigo.com/resource-library/public-key-vs-private-key")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
@@ -437,6 +593,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("Encryption, 2 – Decryption, 3 – Ciphertext, 4 – Public, 5 – Private", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://sectigo.com/resource-library/public-key-vs-private-key")
+
+                        round += 1
 
                 else:
 
@@ -460,6 +622,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
                     self.draw_text("As long as Bob protects his public key", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
 
+                    if click:
+
+                        self.incorrectScreen("https://www.securew2.com/blog/what-is-public-key-cryptography ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
@@ -470,6 +638,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
                     self.draw_text("As long as Bob and Alice protect their keys", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
 
+                    if click:
+
+                        self.incorrectScreen("https://www.securew2.com/blog/what-is-public-key-cryptography ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
@@ -479,6 +653,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("This communication is not secure", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.securew2.com/blog/what-is-public-key-cryptography ")
+
+                        round += 1
 
                 else:
 
@@ -517,6 +697,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
                     self.draw_text("Data integrity", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
 
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Public-key_cryptography")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
@@ -526,6 +712,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
                     self.draw_text("Security", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Public-key_cryptography")
+
+                        round += 1
 
                 else:
 
@@ -552,6 +744,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("Verification", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Public-key_cryptography")
+
+                        round += 1
 
                 else:
 
@@ -591,6 +789,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
                     self.draw_text("Confidentiality", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
 
+                    if click:
+
+                        self.incorrectScreen("https://www.ssh.com/manuals/server-zos-product/55/chooseauth-publickey.html ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
@@ -601,6 +805,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("Security", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
+                    if click:
+
+                        self.incorrectScreen("https://www.ssh.com/manuals/server-zos-product/55/chooseauth-publickey.html ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
@@ -610,6 +820,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("Protection", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.ssh.com/manuals/server-zos-product/55/chooseauth-publickey.html ")
+
+                        round += 1
 
                 else:
 
@@ -631,6 +847,12 @@ class Game:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
                     self.draw_text("It is computationally infeasible for an opponent, knowing the public key, and a ciphertext, to recover the original message", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://binaryterms.com/public-key-cryptography.html ")
+
+                        round += 1
 
                 else:
 
@@ -658,6 +880,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
                     self.draw_text("It is computationally easy for a sender A, knowing the public key and the message to be encrypted, to generate the corresponding ciphertext", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
+                    if click:
+
+                        self.incorrectScreen("https://binaryterms.com/public-key-cryptography.html ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
@@ -668,6 +896,12 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("It is computationally easy for the receiver B to decrypt the resulting ciphertext using the private key to recover the original message", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
 
+                    if click:
+
+                        self.incorrectScreen("https://binaryterms.com/public-key-cryptography.html ")
+
+                        round += 1
+
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
@@ -675,11 +909,43 @@ class Game:
 
                 #Initialize the click variable to be false again.
                 click = False
+
+            gameEnd = False
+
+            if (round > 10 and score >= 6):
+                self.draw_text("You win! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
+                self.draw_text("Press ESC to go to the next level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
+
+                for event in pygame.event.get():
+
+                    #If we escape, return back to the game
+                    if event.type == pygame.KEYDOWN:
+                        
+                        if event.key == pygame.K_ESCAPE:
+
+                            runningQuiz = False
+                            gameEnd = True
+            
+            elif (round > 10 and score < 6):
+                self.draw_text("You Lose! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
+                self.draw_text("Press ESC to go to repeat the level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
+
+                for event in pygame.event.get():
+
+                    #If we escape, return back to the game
+                    if event.type == pygame.KEYDOWN:
+                        
+                        if event.key == pygame.K_ESCAPE:
+
+                            runningQuiz = False
+                            gameEnd = True
                 
 
             click = False
 
-            if round > 10:
+            
+
+            if round > 10 and gameEnd == True:
                 return score
 
             pygame.display.update()
@@ -808,7 +1074,7 @@ class Game:
                 self.map.append(tiles)
             
             #Print the map to the console for testing
-            print(self.map)
+            #print(self.map)
 
     """
     This function is for rendering the map
@@ -867,7 +1133,8 @@ class Game:
         We break out. Will add more later
         """
         if (self.map[new_position[1]][new_position[0]] == "W" or self.map[new_position[1]][new_position[0]] == "A" 
-        or self.map[new_position[1]][new_position[0]] == "R"):
+        or self.map[new_position[1]][new_position[0]] == "R" or self.map[new_position[1]][new_position[0]] == "U"
+        or self.map[new_position[1]][new_position[0]] == "T"):
             return
             
 
@@ -900,8 +1167,11 @@ class Game:
 map_tile_image = {
 
     "G" : pygame.transform.scale(pygame.image.load("imgs/grass1.png"), (config.SCALE, config.SCALE)),
+    "M" : pygame.transform.scale(pygame.image.load("imgs/mud1.png"), (config.SCALE, config.SCALE)),
     "W": pygame.transform.scale(pygame.image.load("imgs/water.png"), (config.SCALE, config.SCALE)),
     "A" : pygame.transform.scale(pygame.image.load("imgs/boss1Tile.png"),(config.SCALE, config.SCALE)),
+    "T" : pygame.transform.scale(pygame.image.load("imgs/rock2Tile.png"),(config.SCALE, config.SCALE)),
+    "U" : pygame.transform.scale(pygame.image.load("imgs/boss2Tile.png"),(config.SCALE, config.SCALE)),
     "R" : pygame.transform.scale(pygame.image.load("imgs/rock1Tile.png"),(config.SCALE, config.SCALE))
 
 }
