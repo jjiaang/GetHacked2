@@ -678,6 +678,9 @@ class Game:
 
             click = False
 
+            if round > 10:
+                return score
+
             pygame.display.update()
             self.clock.tick(60)
 
@@ -766,7 +769,8 @@ class Game:
                 
                 elif event.key == pygame.K_SPACE: #Spacebar for boss
 
-                    self.startQuizOne()
+                    print(self.startQuizOne())
+                    
 
                     if self.detectBoss():
                         print("Ok")
