@@ -125,13 +125,6 @@ class Game:
                     sys.exit()
                     print("quit")
 
-                #If we escape, return back to the game
-                if event.type == pygame.KEYDOWN:
-                    
-                    if event.key == pygame.K_ESCAPE:
-
-                        runningQuiz = False
-
                 if event.type == pygame.MOUSEBUTTONDOWN:
 
                     if event.button == 1:
@@ -908,13 +901,43 @@ class Game:
 
                 #Initialize the click variable to be false again.
                 click = False
+
+            gameEnd = False
+
+            if (round > 10 and score >= 6):
+                self.draw_text("You win! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
+                self.draw_text("Press ESC to go to the next level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
+
+                for event in pygame.event.get():
+
+                    #If we escape, return back to the game
+                    if event.type == pygame.KEYDOWN:
+                        
+                        if event.key == pygame.K_ESCAPE:
+
+                            runningQuiz = False
+                            gameEnd = True
+            
+            elif (round > 10 and score < 6):
+                self.draw_text("You Lose! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
+                self.draw_text("Press ESC to go to repeat the level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
+
+                for event in pygame.event.get():
+
+                    #If we escape, return back to the game
+                    if event.type == pygame.KEYDOWN:
+                        
+                        if event.key == pygame.K_ESCAPE:
+
+                            runningQuiz = False
+                            gameEnd = True
                 
 
             click = False
 
             
 
-            if round > 10:
+            if round > 10 and gameEnd == True:
                 return score
 
             pygame.display.update()
