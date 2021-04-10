@@ -39,6 +39,14 @@ class Game:
         self.screen.fill(config.BLACK)
         self.handle_events()
 
+        self.map = []
+
+        if self.level == 0:
+            self.load_map("01")
+
+        if self.level == 1:
+            self.load_map("02")
+
         self.render_map(self.screen)
 
         for object in self.objects:
@@ -1066,7 +1074,7 @@ class Game:
                 self.map.append(tiles)
             
             #Print the map to the console for testing
-            print(self.map)
+            #print(self.map)
 
     """
     This function is for rendering the map
@@ -1158,8 +1166,11 @@ class Game:
 map_tile_image = {
 
     "G" : pygame.transform.scale(pygame.image.load("imgs/grass1.png"), (config.SCALE, config.SCALE)),
+    "M" : pygame.transform.scale(pygame.image.load("imgs/mud1.png"), (config.SCALE, config.SCALE)),
     "W": pygame.transform.scale(pygame.image.load("imgs/water.png"), (config.SCALE, config.SCALE)),
     "A" : pygame.transform.scale(pygame.image.load("imgs/boss1Tile.png"),(config.SCALE, config.SCALE)),
+    "T" : pygame.transform.scale(pygame.image.load("imgs/rock2Tile.png"),(config.SCALE, config.SCALE)),
+    "U" : pygame.transform.scale(pygame.image.load("imgs/boss2Tile.png"),(config.SCALE, config.SCALE)),
     "R" : pygame.transform.scale(pygame.image.load("imgs/rock1Tile.png"),(config.SCALE, config.SCALE))
 
 }
