@@ -320,6 +320,358 @@ class Game:
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
                     self.draw_text("It is a hash function which algorithm is hard to understand despite producing the same output for different inputs", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
 
+            if round == 5:
+
+                #Load the image
+                round5Image = pygame.image.load("imgs/Q1P3.png")
+
+                #Blit the image
+                self.screen.blit(round5Image, (700,230))
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Message Authentication Using a Message Authentication Code. What ingredients of this scheme are represented by numbers?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Ciphertext, 2 – Key, 3 – Compare ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Ciphertext, 2 – Key, 3 – Compare ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Message, 2 – Key, 3 – Compare", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Message, 2 – Key, 3 – Compare", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Ciphertext, 2 – Key, 3 – Authentication", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Ciphertext, 2 – Key, 3 – Authentication", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Message, 2 – Compare, 3 – Key", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Message, 2 – Compare, 3 – Key", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 6:
+
+                #Load the image
+                round5Image = pygame.image.load("imgs/Q1P6.png")
+
+                #Blit the image
+                self.screen.blit(round5Image, (650,230))
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Public-Key Cryptography. What ingredients of this scheme are represented by numbers?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Public, 2 – Private, 3 – Ciphertext, 4 – Encryption, 5 – Decryption ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Public, 2 – Private, 3 – Ciphertext, 4 – Encryption, 5 – Decryption ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Private, 2 – Public, 3 – Ciphertext, 4 – Decryption, 5 – Encryption", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Private, 2 – Public, 3 – Ciphertext, 4 – Decryption, 5 – Encryption", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Public, 2 – Private, 3 – Plaintext, 4 – Decryption, 5 – Encryption", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Public, 2 – Private, 3 – Plaintext, 4 – Decryption, 5 – Encryption", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Encryption, 2 – Decryption, 3 – Ciphertext, 4 – Public, 5 – Private", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Encryption, 2 – Decryption, 3 – Ciphertext, 4 – Public, 5 – Private", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 7:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("In public-key cryptography all participants have access to public keys and private keys are generated locally by each participant. ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("So, let’s say if Bob wishes to send a private message to Alice, Bob encrypts the message using Alice’s public key and when Alice receives the message, ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+                self.draw_text("she decrypts it using her private key. For how long is this communication secure?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 80)
+
+                #Handling the UI for the button clicks and presses
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("As long as Bob protects his public key", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("As long as Bob protects his public key", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("As long as Bob and Alice protect their keys", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("As long as Bob and Alice protect their keys", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("This communication is not secure", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("This communication is not secure", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                #Correct Answer
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("As long as Alice protects her private key", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("As long as Alice protects her private key", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 8:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("In public-key encryption only the intended recipient should be able to decrypt the ciphertext ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("because only the intended recipient is in possession of the required private key. What property does this sentence define? ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Data integrity", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Data integrity", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Security", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Security", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                #Correct Answer
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Confidentiality", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Confidentiality", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Verification", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Verification", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 9:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("In public-key encryption, if a user is able to successfully recover the plaintext from Bob’s ciphertext using Bob’s public key, ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("this indicates that only Bob could have encrypted the plaintext. What property does this sentence define?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Authentication and/or data integrity", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Authentication and/or data integrity", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Confidentiality", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Confidentiality", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Security", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Security", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Protection", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Protection", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 10:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one of the public-key requirements is not necessary for all public-key applications?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It is computationally infeasible for an opponent, knowing the public key, and a ciphertext, to recover the original message", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It is computationally infeasible for an opponent, knowing the public key, and a ciphertext, to recover the original message", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Either of the two related keys can be used for encryption, with the other used for decryption", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Either of the two related keys can be used for encryption, with the other used for decryption", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It is computationally easy for a sender A, knowing the public key and the message to be encrypted, to generate the corresponding ciphertext", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It is computationally easy for a sender A, knowing the public key and the message to be encrypted, to generate the corresponding ciphertext", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It is computationally easy for the receiver B to decrypt the resulting ciphertext using the private key to recover the original message", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It is computationally easy for the receiver B to decrypt the resulting ciphertext using the private key to recover the original message", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
                 #Initialize the click variable to be false again.
                 click = False
                 
