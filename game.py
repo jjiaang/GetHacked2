@@ -1133,7 +1133,8 @@ class Game:
         We break out. Will add more later
         """
         if (self.map[new_position[1]][new_position[0]] == "W" or self.map[new_position[1]][new_position[0]] == "A" 
-        or self.map[new_position[1]][new_position[0]] == "R"):
+        or self.map[new_position[1]][new_position[0]] == "R" or self.map[new_position[1]][new_position[0]] == "U"
+        or self.map[new_position[1]][new_position[0]] == "T"):
             return
             
 
