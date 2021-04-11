@@ -47,6 +47,9 @@ class Game:
         if self.level == 1:
             self.load_map("02")
 
+        if self.level == 2:
+            self.load_map("03")
+
         self.render_map(self.screen)
 
         for object in self.objects:
@@ -1763,7 +1766,7 @@ class Game:
 
                     if click:
 
-                        self.incorrectScreen("https://binaryterms.com/public-key-cryptography.html ")
+                        score += 1
 
                         round += 1
 
@@ -1851,6 +1854,14 @@ class Game:
         self.map[self.player.position[1]][self.player.position[0] - 1] == 'U' or 
         self.map[self.player.position[1] + 1][self.player.position[0]] == 'U' or 
         self.map[self.player.position[1] - 1][self.player.position[0]] == 'U'):
+
+            print(self.map[self.player.position[1]][self.player.position[0]])
+            return True
+
+        if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'V' or 
+        self.map[self.player.position[1]][self.player.position[0] - 1] == 'V' or 
+        self.map[self.player.position[1] + 1][self.player.position[0]] == 'V' or 
+        self.map[self.player.position[1] - 1][self.player.position[0]] == 'V'):
         
             print(self.map[self.player.position[1]][self.player.position[0]])
             return True
@@ -1877,12 +1888,7 @@ class Game:
             #Handle key pressing events
             elif event.type == pygame.KEYDOWN:
 
-                #Handles the escape button
-                if event.key == pygame.K_ESCAPE:
-
-                    self.game_state = GameState.ENDED
-
-                elif event.key == pygame.K_w: # up
+                if event.key == pygame.K_w: # up
 
                     playerMovement = self.player.updateWalk("UP")
                     self.player.image = pygame.transform.scale(playerMovement, (config.SCALE, config.SCALE))
@@ -1925,6 +1931,9 @@ class Game:
                         
                         if self.level == 1:
                             result = self.startQuizTwo()
+
+                            if result >= 7:
+                                self.level += 1
 
                         print("Ok")
 
@@ -2055,6 +2064,10 @@ map_tile_image = {
     #Level two images
     "M" : pygame.transform.scale(pygame.image.load("imgs/mud1.png"), (config.SCALE, config.SCALE)),
     "T" : pygame.transform.scale(pygame.image.load("imgs/rock2Tile.png"),(config.SCALE, config.SCALE)),
-    "U" : pygame.transform.scale(pygame.image.load("imgs/boss2Tile.png"),(config.SCALE, config.SCALE))
+    "U" : pygame.transform.scale(pygame.image.load("imgs/boss2Tile.png"),(config.SCALE, config.SCALE)),
+
+    #Level three images
+    "C" : pygame.transform.scale(pygame.image.load("imgs/red1Tile.png"), (config.SCALE, config.SCALE)),
+    "V" : pygame.transform.scale(pygame.image.load("imgs/rock3Tile.png"), (config.SCALE, config.SCALE))
 
 }

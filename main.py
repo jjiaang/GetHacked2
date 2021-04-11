@@ -138,11 +138,9 @@ def credits():
 
         draw_text('To defeat the bosses, answer the questions and get it right!', pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 170)
 
-        draw_text("You can press escape in the game to pause and quit to main menu", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 200)
-
         draw_text("This is your character! He wants to learn about cybersecurity to protect himself", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 320)
 
-        draw_text("Use WASD to move your character, and use the mouse button to interact with the questions!", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 350)
+        draw_text("Use WASD to move your character, and press the space bar when you meet the boss to quiz up!", pygame.font.SysFont("Arial", 15), (255, 255, 255), screen, 20, 350)
 
         """
         mx and my are where are mouse variables are. 
