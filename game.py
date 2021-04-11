@@ -1534,7 +1534,7 @@ class Game:
                     if click:
 
                         self.incorrectScreen("https://en.wikipedia.org/wiki/Triple_DES ")
-                        score += 1
+                        round += 1
 
                 else:
 
@@ -2068,6 +2068,7 @@ map_tile_image = {
 
     #Level three images
     "C" : pygame.transform.scale(pygame.image.load("imgs/red1Tile.png"), (config.SCALE, config.SCALE)),
-    "V" : pygame.transform.scale(pygame.image.load("imgs/rock3Tile.png"), (config.SCALE, config.SCALE))
+    "V" : pygame.transform.scale(pygame.image.load("imgs/rock3Tile.png"), (config.SCALE, config.SCALE)), 
+    "B" : pygame.transform.scale(pygame.image.load("imgs/boss3Tile.png"),(config.SCALE, config.SCALE))
 
 }
