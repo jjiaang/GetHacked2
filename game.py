@@ -1098,7 +1098,7 @@ class Game:
 
                     if click:
 
-                        self.incorrectScreen("https://www.cryptomathic.com/news-events/blog/symmetric-key-encryption-why-where-and-how-its-used-in-banking#:~:text=Symmetric%20encryption%20is%20a%20type,used%20in%20the%20decryption%20process. ")
+                        score +=1
 
                         round += 1
 
@@ -1114,7 +1114,7 @@ class Game:
 
                     if click:
 
-                        self.incorrectScreen("https://www.cryptomathic.com/news-events/blog/symmetric-key-encryption-why-where-and-how-its-used-in-banking#:~:text=Symmetric%20encryption%20is%20a%20type,used%20in%20the%20decryption%20process.  ")
+                        score +=1
 
                         round += 1
 
@@ -1130,7 +1130,7 @@ class Game:
 
                     if click:
 
-                        self.incorrectScreen("https://www.cryptomathic.com/news-events/blog/symmetric-key-encryption-why-where-and-how-its-used-in-banking#:~:text=Symmetric%20encryption%20is%20a%20type,used%20in%20the%20decryption%20process")
+                        score +=1
 
                         round += 1
 
@@ -1700,62 +1700,66 @@ class Game:
 
                 #Display Text for questions
                 self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
-                self.draw_text("Which one of the public-key requirements is not necessary for all public-key applications?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("A stream cipher processes the input elements continuously, producing output of one element at a time, as it goes along. ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("Although block ciphers are far more common, there are certain applications in which a stream cipher is more appropriate. What advantages do stream ciphers have over ECB?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
 
                 #Handling the UI for the button clicks and presses
 
                 if buttonA.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
-                    self.draw_text("It is computationally infeasible for an opponent, knowing the public key, and a ciphertext, to recover the original message", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+                    self.draw_text("The key can be reused", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
 
                     if click:
 
-                        self.incorrectScreen("https://binaryterms.com/public-key-cryptography.html ")
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation ")
 
                         round += 1
 
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
-                    self.draw_text("It is computationally infeasible for an opponent, knowing the public key, and a ciphertext, to recover the original message", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+                    self.draw_text("The key can be reused", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
 
-                #Correct Answer
+                
                 if buttonB.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
-                    self.draw_text("Either of the two related keys can be used for encryption, with the other used for decryption", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+                    self.draw_text("Better dealing with blocks of data", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
 
                     if click:
 
-                        round += 1
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation ")
+
                         score += 1
 
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
-                    self.draw_text("Either of the two related keys can be used for encryption, with the other used for decryption", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+                    self.draw_text("Better dealing with blocks of data", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
 
+                #Correct Answer
                 if buttonC.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
-                    self.draw_text("It is computationally easy for a sender A, knowing the public key and the message to be encrypted, to generate the corresponding ciphertext", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+                    self.draw_text("Almost always faster", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
 
                     if click:
 
-                        self.incorrectScreen("https://binaryterms.com/public-key-cryptography.html ")
+                        score += 1
 
                         round += 1
 
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
-                    self.draw_text("It is computationally easy for a sender A, knowing the public key and the message to be encrypted, to generate the corresponding ciphertext", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+                    self.draw_text("Almost always faster", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
 
+                #Correct Answer
                 if buttonD.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
-                    self.draw_text("It is computationally easy for the receiver B to decrypt the resulting ciphertext using the private key to recover the original message", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+                    self.draw_text("Use far less code than do block ciphers", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
 
                     if click:
 
@@ -1766,7 +1770,7 @@ class Game:
                 else:
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
-                    self.draw_text("It is computationally easy for the receiver B to decrypt the resulting ciphertext using the private key to recover the original message", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+                    self.draw_text("Use far less code than do block ciphers", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
 
                 #Initialize the click variable to be false again.
                 click = False
@@ -2042,12 +2046,15 @@ class Game:
 #A python dict/hashmap for the types of tiles in the game, they should be 64x64
 map_tile_image = {
 
+    #Level one Images
     "G" : pygame.transform.scale(pygame.image.load("imgs/grass1.png"), (config.SCALE, config.SCALE)),
-    "M" : pygame.transform.scale(pygame.image.load("imgs/mud1.png"), (config.SCALE, config.SCALE)),
     "W": pygame.transform.scale(pygame.image.load("imgs/water.png"), (config.SCALE, config.SCALE)),
     "A" : pygame.transform.scale(pygame.image.load("imgs/boss1Tile.png"),(config.SCALE, config.SCALE)),
+    "R" : pygame.transform.scale(pygame.image.load("imgs/rock1Tile.png"),(config.SCALE, config.SCALE)),
+
+    #Level two images
+    "M" : pygame.transform.scale(pygame.image.load("imgs/mud1.png"), (config.SCALE, config.SCALE)),
     "T" : pygame.transform.scale(pygame.image.load("imgs/rock2Tile.png"),(config.SCALE, config.SCALE)),
-    "U" : pygame.transform.scale(pygame.image.load("imgs/boss2Tile.png"),(config.SCALE, config.SCALE)),
-    "R" : pygame.transform.scale(pygame.image.load("imgs/rock1Tile.png"),(config.SCALE, config.SCALE))
+    "U" : pygame.transform.scale(pygame.image.load("imgs/boss2Tile.png"),(config.SCALE, config.SCALE))
 
 }
