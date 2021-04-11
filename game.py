@@ -1821,6 +1821,858 @@ class Game:
             pygame.display.update()
             self.clock.tick(60)
 
+    "The function for quiz three: Malware"
+    
+    def startQuizThree(self):
+
+        runningQuiz = True
+
+        click = False
+
+        score = 0
+
+        round = 1
+
+        while runningQuiz:
+
+            self.screen.fill((0, 0, 0))
+
+            #Check for events
+            for event in pygame.event.get():
+
+                #If the event is quit, then we exit
+                if event.type == pygame.QUIT:
+
+                    runningQuiz = False
+                    pygame.quit()
+                    sys.exit()
+                    print("quit")
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+
+                    if event.button == 1:
+                        
+                        click = True
+
+            """
+            mx and my are where are mouse variables are. 
+            """
+            mx, my = pygame.mouse.get_pos()
+
+            #Setting up the quiz buttons
+            buttonA = pygame.Rect(10,100,500,125)
+            buttonB = pygame.Rect(10,300,500,125)
+
+            buttonC = pygame.Rect(10,500,500,125)
+            buttonD = pygame.Rect(10,700,500,125)
+
+            if round == 1:
+                #Handling the UI for the button clicks and presses
+
+                #Load the image
+                round5Image = pygame.image.load("imgs/Q2P1.png")
+
+                #Blit the image
+                self.screen.blit(round5Image, (600,230))
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that runs with highest possible privileges, uses privilege to hide its presence from system", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_virus ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that runs with highest possible privileges, uses privilege to hide its presence from system", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Malware that uses fear or threats to trick users into paying ransoms or purchasing software", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_virus ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Malware that uses fear or threats to trick users into paying ransoms or purchasing software", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                #Correct Answer
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Malware that automatically attaches itself to benign programs or files", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Malware that automatically attaches itself to benign programs or files", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_virus ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one of the following definitions is used to describe a virus?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+            if round == 2:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one of the following definitions is used to describe a worm?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        score +=1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Malware that restricts access to resources until a user pays a ransom to regain access", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_worm ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Malware that restricts access to resources until a user pays a ransom to regain access", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Malware that automatically attaches itself to benign programs or files", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_worm ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Malware that automatically attaches itself to benign programs or files", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Gathers information about users’ and then uses it to display targeted advertisements to user", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_worm ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Gathers information about users’ and then uses it to display targeted advertisements to user", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                click = False
+
+            if round == 3:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one of the following definitions is used to describe a trojan?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that automatically attaches itself to benign programs or files", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Trojan_horse_(computing) ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that automatically attaches itself to benign programs or files", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Malware hidden within a seemingly innocuous or desirable program", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Malware hidden within a seemingly innocuous or desirable program", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                #Correct Answer
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Malware that automatically attaches itself to benign programs or files", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Trojan_horse_(computing) ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Malware that automatically attaches itself to benign programs or files", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                #Correct Answer
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Trojan_horse_(computing) ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 4:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one of the following definitions is used to describe a rootkit?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that runs with highest possible privileges, uses privilege to hide its presence from system", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that runs with highest possible privileges, uses privilege to hide its presence from system", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Rootkit#:~:text=A%20rootkit%20is%20a%20collection,the%20existence%20of%20other%20software. ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                #Correct Answer
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Malware that uses fear or threats to trick users into paying ransoms or purchasing software", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Rootkit#:~:text=A%20rootkit%20is%20a%20collection,the%20existence%20of%20other%20software. ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Malware that uses fear or threats to trick users into paying ransoms or purchasing software", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Malware hidden within a seemingly innocuous or desirable program", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Rootkit#:~:text=A%20rootkit%20is%20a%20collection,the%20existence%20of%20other%20software. ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Malware hidden within a seemingly innocuous or desirable program", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                click = False
+
+            if round == 5:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Signature-based detection maintains a list of known viruses and for each virus store some characteristics. ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("However, some viruses evade signature-based detection using polymorphic code. What is the virus polymorphism? ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Every time the virus replicates, it modifies itself so as to look different", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Every time the virus replicates, it modifies itself so as to look differente", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Virus invades the antivirus software and damages it first", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.trendmicro.com/vinfo/us/security/definition/Polymorphic-virus ")
+
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Virus invades the antivirus software and damages it first", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Virus replicates too quickly, such that antivirus cannot handle it", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.trendmicro.com/vinfo/us/security/definition/Polymorphic-virus ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Virus replicates too quickly, such that antivirus cannot handle it", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Virus mimics code of a “normal” program and is not detected by antivirus", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.trendmicro.com/vinfo/us/security/definition/Polymorphic-virus ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Virus mimics code of a “normal” program and is not detected by antivirus", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 6:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("What is the typical purpose of the payload in worms?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("To erase files", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_worm ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("To erase files", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("To download more malware", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_worm ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("To download more malware", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                #Correct Answer
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("To seek a new host", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("To seek a new host", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("To disable antivirus", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Computer_worm ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("To disable antivirus", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 7:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("How do trojans typically spread?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("They rely on files which are shared between users", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Trojan_horse_(computing) ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("They rely on files which are shared between users", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("They rely on users to download and execute the trojan’s payload", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("They rely on users to download and execute the trojan’s payload", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("They rely only on files stored in secondary storage devices", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Trojan_horse_(computing) ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("They rely only on files stored in secondary storage devices", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("They are hidden within an original operating system", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Trojan_horse_(computing) ")
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("They are hidden within an original operating system", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 8:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("A logic bomb is dormant payload with a program that triggers if some condition is met. One of the triggers is something an insider can affect at will, ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("e.g., file modification, sequence of numbers entered. What would be another potential trigger?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("If we reinstall an operating system", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://searchsecurity.techtarget.com/definition/logic-bomb ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("If we reinstall an operating system", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("If we delete a program containing a logic bomb", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://searchsecurity.techtarget.com/definition/logic-bomb ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("If we delete a program containing a logic bomb", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("When updating antivirus before scanning an operating system", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://searchsecurity.techtarget.com/definition/logic-bomb ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("When updating antivirus before scanning an operating system", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                #Correct Answer
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("A future event takes place, e.g., specific date and/or time; user visits a website", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("A future event takes place, e.g., specific date and/or time; user visits a website", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 9:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Why can spotting trojans and logic bombs be extremely tricky?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Because they are polymorphic", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://nordvpn.com/blog/logic-bomb/ ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Because they are polymorphic", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("A user intentionally runs a code, which serves a useful purpose", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("A user intentionally runs a code, which serves a useful purpose", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Many new trojans and logic bombs are created daily", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://nordvpn.com/blog/logic-bomb/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Many new trojans and logic bombs are created daily", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("They are relatively new, as a result the best techniques do not exist yet", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://nordvpn.com/blog/logic-bomb/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("They are relatively new, as a result the best techniques do not exist yet", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 10:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one of the following malwares were created by US and Israeli intelligence agencies, which targeted ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("Supervisory Control and Data Acquisition systems and is believed to be responsible for causing substantial damage to the nuclear program of Iran?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Sasser", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Stuxnet ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Sasser", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("STUXnet", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        round += 1
+
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("STUXnet", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("SQL Slammer", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Stuxnet ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("SQL Slammer", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Code Red", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Stuxnet ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Code Red", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            gameEnd = False
+
+            if (round > 10 and score >= 6):
+                self.draw_text("You win! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
+                self.draw_text("Press ESC to go to the next level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
+
+                for event in pygame.event.get():
+
+                    #If we escape, return back to the game
+                    if event.type == pygame.KEYDOWN:
+                        
+                        if event.key == pygame.K_ESCAPE:
+
+                            runningQuiz = False
+                            gameEnd = True
+                            return score
+            
+            elif (round > 10 and score < 6):
+                self.draw_text("You Lose! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
+                self.draw_text("Press ESC to go to repeat the level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
+
+                for event in pygame.event.get():
+
+                    #If we escape, return back to the game
+                    if event.type == pygame.KEYDOWN:
+                        
+                        if event.key == pygame.K_ESCAPE:
+
+                            runningQuiz = False
+                            gameEnd = True
+                            return score
+                
+
+            click = False
+
+            
+
+            if round > 10 and gameEnd == True:
+                return score
+
+            pygame.display.update()
+            self.clock.tick(60)
+
     """
     Detect if the player is at the correct position in front of the boss
 
