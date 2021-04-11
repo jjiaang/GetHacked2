@@ -115,6 +115,56 @@ class Game:
             pygame.display.update()
             self.clock.tick(60)
 
+    def winScreen(self):
+
+        runningScreen = True
+
+        click = False
+
+        while runningScreen:
+
+            self.screen.fill((0, 0, 0))
+
+            buttonNext = pygame.Rect(10,700,500,125)
+
+            mx, my = pygame.mouse.get_pos()
+
+            for event in pygame.event.get():
+                #If the event is quit, then we exit
+                if event.type == pygame.QUIT:
+
+                    runningScreen = False
+                    pygame.quit()
+                    sys.exit()
+                    print("quit")
+                
+                if event.type == pygame.MOUSEBUTTONDOWN:
+
+                    if event.button == 1:
+                        
+                        click = True
+
+            self.draw_text("You win!", pygame.font.SysFont("Arial", 20), (255, 255, 255), self.screen, 80, 100)
+
+            if buttonNext.collidepoint((mx,my)):
+                pygame.draw.rect(self.screen, (82, 46, 78), buttonNext)
+                self.draw_text("Quit Game", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 750)
+
+                if click:
+
+                    pygame.quit()
+                    sys.exit()
+
+            else:
+
+                pygame.draw.rect(self.screen, (112, 64, 107), buttonNext)
+                self.draw_text("Quit Game", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 750)
+
+            click = False
+
+            pygame.display.update()
+            self.clock.tick(60)
+
     "The function for quiz one"
 
     def startQuizOne(self):
@@ -1869,12 +1919,6 @@ class Game:
             if round == 1:
                 #Handling the UI for the button clicks and presses
 
-                #Load the image
-                round5Image = pygame.image.load("imgs/Q2P1.png")
-
-                #Blit the image
-                self.screen.blit(round5Image, (600,230))
-
                 if buttonA.collidepoint((mx,my)):
 
                     pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
@@ -2710,10 +2754,10 @@ class Game:
             print(self.map[self.player.position[1]][self.player.position[0]])
             return True
 
-        if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'V' or 
-        self.map[self.player.position[1]][self.player.position[0] - 1] == 'V' or 
-        self.map[self.player.position[1] + 1][self.player.position[0]] == 'V' or 
-        self.map[self.player.position[1] - 1][self.player.position[0]] == 'V'):
+        if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'B' or 
+        self.map[self.player.position[1]][self.player.position[0] - 1] == 'B' or 
+        self.map[self.player.position[1] + 1][self.player.position[0]] == 'B' or 
+        self.map[self.player.position[1] - 1][self.player.position[0]] == 'B'):
         
             print(self.map[self.player.position[1]][self.player.position[0]])
             return True
@@ -2786,6 +2830,16 @@ class Game:
 
                             if result >= 7:
                                 self.level += 1
+                            
+                            break
+
+                        if self.level == 8:
+                            result = self.startQuizThree()
+
+                            if result >= 2:
+                                self.winScreen()
+
+                            break
 
                         print("Ok")
 
@@ -2875,7 +2929,8 @@ class Game:
         """
         if (self.map[new_position[1]][new_position[0]] == "W" or self.map[new_position[1]][new_position[0]] == "A" 
         or self.map[new_position[1]][new_position[0]] == "R" or self.map[new_position[1]][new_position[0]] == "U"
-        or self.map[new_position[1]][new_position[0]] == "T"):
+        or self.map[new_position[1]][new_position[0]] == "T" or self.map[new_position[1]][new_position[0]] == "B"
+        or self.map[new_position[1]][new_position[0]] == "V"):
             return
             
 

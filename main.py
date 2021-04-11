@@ -269,8 +269,8 @@ def mainMenu():
                 otherwise we go to else, which is just not highlighting the button, and same text
                 """
 
-                #fadeOut()
-                #loadingGame()
+                fadeOut()
+                loadingGame()
                 startGame()
 
         else:
