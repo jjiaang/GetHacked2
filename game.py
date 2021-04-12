@@ -9,6 +9,10 @@ from quiz import Quiz
 """
 Define the Game class
 """
+
+"""
+SOME CODE USED FROM TECH WITH TIM AND BADCODINGHABITS YOUTUBE CHANNEL
+"""
 class Game:
 
     """
@@ -75,7 +79,7 @@ class Game:
 
             self.screen.fill((0, 0, 0))
 
-            buttonNext = pygame.Rect(10,700,500,125)
+            buttonNext = pygame.Rect(10,400,500,125)
 
             mx, my = pygame.mouse.get_pos()
 
@@ -99,7 +103,7 @@ class Game:
 
             if buttonNext.collidepoint((mx,my)):
                 pygame.draw.rect(self.screen, (82, 46, 78), buttonNext)
-                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 750)
+                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 450)
 
                 if click:
 
@@ -108,7 +112,7 @@ class Game:
             else:
 
                 pygame.draw.rect(self.screen, (112, 64, 107), buttonNext)
-                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 750)
+                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 450)
 
             click = False
 
