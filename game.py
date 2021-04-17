@@ -9,6 +9,10 @@ from quiz import Quiz
 """
 Define the Game class
 """
+
+"""
+SOME CODE USED FROM TECH WITH TIM AND BADCODINGHABITS YOUTUBE CHANNEL
+"""
 class Game:
 
     """
@@ -50,6 +54,9 @@ class Game:
         if self.level == 2:
             self.load_map("03")
 
+        if self.level == 3:
+            self.load_map("04")
+
         self.render_map(self.screen)
 
         for object in self.objects:
@@ -75,7 +82,7 @@ class Game:
 
             self.screen.fill((0, 0, 0))
 
-            buttonNext = pygame.Rect(10,700,500,125)
+            buttonNext = pygame.Rect(10,400,500,125)
 
             mx, my = pygame.mouse.get_pos()
 
@@ -99,7 +106,7 @@ class Game:
 
             if buttonNext.collidepoint((mx,my)):
                 pygame.draw.rect(self.screen, (82, 46, 78), buttonNext)
-                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 750)
+                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 450)
 
                 if click:
 
@@ -108,7 +115,7 @@ class Game:
             else:
 
                 pygame.draw.rect(self.screen, (112, 64, 107), buttonNext)
-                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 750)
+                self.draw_text("Next Question", pygame.font.SysFont("Arial", 30), (255, 255, 255), self.screen, 10, 450)
 
             click = False
 
@@ -1830,7 +1837,7 @@ class Game:
 
             gameEnd = False
 
-            if (round > 10 and score >= 6):
+            if (round > 10 and score >= 7):
                 self.draw_text("You win! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
                 self.draw_text("Press ESC to go to the next level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
 
@@ -1845,7 +1852,7 @@ class Game:
                             gameEnd = True
                             return score
             
-            elif (round > 10 and score < 6):
+            elif (round > 10 and score < 7):
                 self.draw_text("You Lose! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
                 self.draw_text("Press ESC to go to repeat the level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
 
@@ -2676,7 +2683,7 @@ class Game:
 
             gameEnd = False
 
-            if (round > 10 and score >= 6):
+            if (round > 10 and score >= 8):
                 self.draw_text("You win! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
                 self.draw_text("Press ESC to go to the next level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
 
@@ -2691,7 +2698,7 @@ class Game:
                             gameEnd = True
                             return score
             
-            elif (round > 10 and score < 6):
+            elif (round > 10 and score < 8):
                 self.draw_text("You Lose! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
                 self.draw_text("Press ESC to go to repeat the level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
 
@@ -2712,6 +2719,1011 @@ class Game:
             
 
             if round > 10 and gameEnd == True:
+                return score
+
+            pygame.display.update()
+            self.clock.tick(60)
+
+    "The function for quiz four: User Authentication, final round."
+    
+    def startQuizFour(self):
+
+        runningQuiz = True
+
+        click = False
+
+        score = 0
+
+        round = 1
+
+        while runningQuiz:
+
+            self.screen.fill((0, 0, 0))
+
+            #Check for events
+            for event in pygame.event.get():
+
+                #If the event is quit, then we exit
+                if event.type == pygame.QUIT:
+
+                    runningQuiz = False
+                    pygame.quit()
+                    sys.exit()
+                    print("quit")
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+
+                    if event.button == 1:
+                        
+                        click = True
+
+            """
+            mx and my are where are mouse variables are. 
+            """
+            mx, my = pygame.mouse.get_pos()
+
+            #Setting up the quiz buttons
+            buttonA = pygame.Rect(10,100,500,125)
+            buttonB = pygame.Rect(10,300,500,125)
+
+            buttonC = pygame.Rect(10,500,500,125)
+            buttonD = pygame.Rect(10,700,500,125)
+
+            if round == 1:
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("First – identification step, second – verification step", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("First – identification step, second – verification step", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("First – verification step, second – identification step", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://searchsecurity.techtarget.com/definition/authentication ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("First – verification step, second – identification step", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("First – confirmation step, second – approval step", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://searchsecurity.techtarget.com/definition/authentication ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("First – confirmation step, second – approval step", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("First – approval step, second – confirmation step", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://searchsecurity.techtarget.com/definition/authentication ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("First – approval step, second – confirmation step", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Authentication is the process of verifying an identity claimed by or for a system entity. What are two steps of which authentication process consists of?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+            if round == 2:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("What is the difference between a user authentication and a message authentication?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("There is no difference between two", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Message_authentication")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Malware that spreads with little-to-no user involvement", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("User authentication is part of the message authentication process, which is important in making sure that the person with whom is trying to establish information ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+                    self.draw_text("interchange is the right one and no one is mimicking or pretending that person with regards to hack initiators system", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 370)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Message_authentication")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("User authentication is part of the message authentication process, which is important in making sure that the person with whom is trying to establish information ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+                    self.draw_text("interchange is the right one and no one is mimicking or pretending that person with regards to hack initiators system", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 370)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("User authentication is the means of establishing the validity of the claim; message authentication is a procedure that ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+                    self.draw_text("allows communicating parties to verify that the contents of a received message have not been altered and that the source is authentic", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 570)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("User authentication is the means of establishing the validity of the claim; message authentication is a procedure that ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+                    self.draw_text("allows communicating parties to verify that the contents of a received message have not been altered and that the source is authentic", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 570)
+
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Message authentication is the process of establishing the validity of the contents of the message", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+                    self.draw_text("Message authentication is the process of establishing the validity of the contents of the message", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 770)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Message_authentication")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Message authentication is the process of establishing the validity of the contents of the message", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+                    self.draw_text("user authentication is the procedure of confirming that the person who is claiming a specific identity is the right one by using third party’s assistance", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 770)
+
+                click = False
+
+            if round == 3:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("What is the electronic credential to the subscriber in the model for Electronic User Authentication?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It is a data structure that authoritatively binds an identity and additional attributes to a token possessed by a subscriber", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It is a data structure that authoritatively binds an identity and additional attributes to a token possessed by a subscriber", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("It is a data structure responsible for secure interactions between two customers on the Internet", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("It is a data structure responsible for secure interactions between two customers on the Internet", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It is a data structure that keeps users’ passwords and private information in an encrypted file", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It is a data structure that keeps users’ passwords and private information in an encrypted file", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It is a data structure that binds identity to a token and can be verified by third parties in terms of illegal actions on the Internet", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://www.cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It is a data structure that binds identity to a token and can be verified by third parties in terms of illegal actions on the Internet", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 4:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("In the Electronic User Authentication process why does the verifier pass on an assertion about the identity of the subscriber to the relying party (RP)?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("The RP can use the authenticated information to create a safe connection between user and account", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://www.cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3 ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("The RP can use the authenticated information to create a safe connection between user and account", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("The RP can use the authenticated information provided by the verifier to make access control or authorization decisions", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3 ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("The RP can use the authenticated information provided by the verifier to make access control or authorization decisions", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("The RP can use the authenticated information and compromised users if they do illegal actions or unethical commenting", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3 ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("The RP can use the authenticated information and compromised users if they do illegal actions or unethical commenting", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("The RP can use the authenticated information and protect users from the potential hacking risk while they are sharing their private information ", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3 ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("The RP can use the authenticated information and protect users from the potential hacking risk while they are sharing their private information ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                click = False
+
+            if round == 5:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one of the authenticator choices bellow is referred to as a token?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Personal identification number (PIN)", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Multi-factor_authentication ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Personal identification number (PIN)", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Fingerprint", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Multi-factor_authentication ")
+
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("Fingerprint", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Handwriting characteristics", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://en.wikipedia.org/wiki/Multi-factor_authentication ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Handwriting characteristics", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                #Correct Screen
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Electronic key card", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Electronic key card", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 6:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("An assurance level describes an organization’s degree of certainty that a user has presented a credential that refers to his or her identity. More specifically, ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("assurance is partially defined as the degree of confidence in the vetting process used to establish the identity of the individual to whom the credential was issued. What is the second requirement?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("The degree of confidence that the individual who uses the credential is the individual to whom the credential was issued ", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("The degree of confidence that the individual who uses the credential is the individual to whom the credential was issued ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("The degree of confidence that individuals who share an account know the individual to whom the credential was issued", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://books.google.ca/books?id=zuS9CwAAQBAJ&pg=PA84&lpg=PA84&dq=The+degree+of+confidence+that+the+individual+who+uses+the+credential+is+the+individual+to+whom+the+credential+was+issued&source=bl&ots=yQwxpqnBQo&sig=ACfU3U3vitwskOOFOuncC7e3_qyf1GNF6Q&hl=en&sa=X&ved=2ahUKEwinyNfQkYLwAhXM854KHSF9AfkQ6AEwB3oECA4QAw#v=onepage&q=The%20degree%20of%20confidence%20that%20the%20individual%20who%20uses%20the%20credential%20is%20the%20individual%20to%20whom%20the%20credential%20was%20issued&f=false ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("The degree of confidence that individuals who share an account know the individual to whom the credential was issued", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("The degree of confidence that personal information about user will not be leaked and credentials will be kept safe", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://books.google.ca/books?id=zuS9CwAAQBAJ&pg=PA84&lpg=PA84&dq=The+degree+of+confidence+that+the+individual+who+uses+the+credential+is+the+individual+to+whom+the+credential+was+issued&source=bl&ots=yQwxpqnBQo&sig=ACfU3U3vitwskOOFOuncC7e3_qyf1GNF6Q&hl=en&sa=X&ved=2ahUKEwinyNfQkYLwAhXM854KHSF9AfkQ6AEwB3oECA4QAw#v=onepage&q=The%20degree%20of%20confidence%20that%20the%20individual%20who%20uses%20the%20credential%20is%20the%20individual%20to%20whom%20the%20credential%20was%20issued&f=false ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("The degree of confidence that personal information about user will not be leaked and credentials will be kept safe", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("The degree of confidence that information shared about a person does not give too much publicity of his/her private data", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://books.google.ca/books?id=zuS9CwAAQBAJ&pg=PA84&lpg=PA84&dq=The+degree+of+confidence+that+the+individual+who+uses+the+credential+is+the+individual+to+whom+the+credential+was+issued&source=bl&ots=yQwxpqnBQo&sig=ACfU3U3vitwskOOFOuncC7e3_qyf1GNF6Q&hl=en&sa=X&ved=2ahUKEwinyNfQkYLwAhXM854KHSF9AfkQ6AEwB3oECA4QAw#v=onepage&q=The%20degree%20of%20confidence%20that%20the%20individual%20who%20uses%20the%20credential%20is%20the%20individual%20to%20whom%20the%20credential%20was%20issued&f=false ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("The degree of confidence that information shared about a person does not give too much publicity of his/her private data", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 7:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("Which one of the potential impact levels of the authentication error is described by: result in significant damage to organizational assets; ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("result in significant financial loss; result in significant harm to individuals that does not involve loss of life or serious life-threatening injuries?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Moderate level", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Moderate level", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("High level", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://it.wisc.edu/about/user-authentication-and-levels-of-assurance/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("High level", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Low level", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://it.wisc.edu/about/user-authentication-and-levels-of-assurance/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Low level", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Extremely high level", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://it.wisc.edu/about/user-authentication-and-levels-of-assurance/ ")
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("Extremely high level", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 8:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("What type of password attack is described as workstation hijacking?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("The attacker uses personal knowledge of a specific co-worker and guesses passwords on the work computer", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://blog.eccouncil.org/what-is-session-hijacking-and-how-to-prevent-it/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("The attacker uses personal knowledge of a specific co-worker and guesses passwords on the work computer", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("The attacker tries to steal personal items of the co-worker and attempts to get information about computer passwords", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        self.incorrectScreen("https://blog.eccouncil.org/what-is-session-hijacking-and-how-to-prevent-it/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("The attacker tries to steal personal items of the co-worker and attempts to get information about computer passwords", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                #Correct Answer
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("The attacker waits until a logged-in workstation is unattended", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        round += 1
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("The attacker waits until a logged-in workstation is unattended", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("The attacker tries to hack root account and gain information about specific person", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://blog.eccouncil.org/what-is-session-hijacking-and-how-to-prevent-it/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("The attacker tries to hack root account and gain information about specific person", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 9:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("When a user attempts to log on to a UNIX system, the user provides an ID and a password. The operating system uses the ID ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("to index into the password file and retrieve the plaintext salt and the encrypted password. What is the next step of the process?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("The passwords are compared to the ones stored on the server if they match, users get an access to the system", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        round += 1
+                        self.incorrectScreen("https://auth0.com/blog/hashing-passwords-one-way-road-to-security/ ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("The passwords are compared to the ones stored on the server if they match, users get an access to the system", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("The salt and user-supplied password are used as input to the encryption routine. If the result matches the stored value, the password is accepted", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("The salt and user-supplied password are used as input to the encryption routine. If the result matches the stored value, the password is accepted", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("The users’ passwords are used as input to the encryption routine and if they match with the stored values, the passwords are accepted", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://auth0.com/blog/hashing-passwords-one-way-road-to-security/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("The users’ passwords are used as input to the encryption routine and if they match with the stored values, the passwords are accepted", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("The pepper is used on salt and encryption is performed on them, and then on the password which was entered by user and if matches the stored value, the password is accepted", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://auth0.com/blog/hashing-passwords-one-way-road-to-security/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("The pepper is used on salt and encryption is performed on them, and then on the password which was entered by user and if matches the stored value, the password is accepted", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 10:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("What are the salt advantages in using it for hashed passwords?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It increases complexity of passwords, but doesn’t prevent them from the dictionary attacks", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://auth0.com/blog/hashing-passwords-one-way-road-to-security/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It increases complexity of passwords, but doesn’t prevent them from the dictionary attacks", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("It prevents duplicate passwords from being visible in the password file; increases the difficulty of offline dictionary attacks", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        round += 1
+
+                        score += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("It prevents duplicate passwords from being visible in the password file; increases the difficulty of offline dictionary attacks", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It prevents from dictionary attacks; however, the passwords are duplicated and visible in the password file if the passwords are the same", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://auth0.com/blog/hashing-passwords-one-way-road-to-security/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It prevents from dictionary attacks; however, the passwords are duplicated and visible in the password file if the passwords are the same", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It duplicates passwords and make them invisible in the password file; increases the difficulty of offline dictionary attacks", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://auth0.com/blog/hashing-passwords-one-way-road-to-security/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It duplicates passwords and make them invisible in the password file; increases the difficulty of offline dictionary attacks", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+
+            if round == 11:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("What is referred to as a shadow password file?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+
+                #Handling the UI for the button clicks and presses
+
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It is the hashed passwords file, which is kept together with users’ IDs and is protected from unauthorized access", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.cyberciti.biz/faq/understanding-etcshadow-file/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("It is the hashed passwords file, which is kept together with users’ IDs and is protected from unauthorized access", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("It is the hashed password file, which is kept together with users’ IDs and is public for all users of the system", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        round += 1
+
+                        self.incorrectScreen("https://www.cyberciti.biz/faq/understanding-etcshadow-file/ ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("It is the hashed password file, which is kept together with users’ IDs and is public for all users of the system", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It is the plaintext passwords file, which is kept separately from the file with users’ IDs and is protected from unauthorized access", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.cyberciti.biz/faq/understanding-etcshadow-file/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("It is the plaintext passwords file, which is kept separately from the file with users’ IDs and is protected from unauthorized access", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                #Correct Answer
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It is the hashed passwords file, which is kept separately from the file with users’ IDs and is protected from unauthorized access", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        score += 1
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("It is the hashed passwords file, which is kept separately from the file with users’ IDs and is protected from unauthorized access", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            if round == 12:
+
+                #Display Text for questions
+                self.draw_text("Question " + str(round), pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 15)
+                self.draw_text("In terms of trying to protect system from weak passwords, a possible procedure is simply to compile a large dictionary of possible “bad” passwords (password checker). ", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 40)
+                self.draw_text("When a user selects a password, the system checks to make sure that it is not on the disapproved list. What are two problems with this approach?", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 20, 60)
+
+                #Handling the UI for the button clicks and presses
+
+                #Correct Answer
+                if buttonA.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Space and Time", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 150)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.enzoic.com/password-cracking-dictionaries/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonA)
+                    self.draw_text("Space and Time", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 150)
+
+                #Correct Answer
+                if buttonB.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("It is hard to save all possible variations of the same password", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 350)
+
+                    if click:
+
+                        round += 1
+
+                        self.incorrectScreen("https://www.enzoic.com/password-cracking-dictionaries/ ")
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonB)
+                    self.draw_text("It is hard to save all possible variations of the same password", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 350)
+
+                if buttonC.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Hard to distinguish between “bad” and “good” passwords", pygame.font.SysFont("Arial", 16), 	(105,105,105), self.screen, 10, 550)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.enzoic.com/password-cracking-dictionaries/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonC)
+                    self.draw_text("Hard to distinguish between “bad” and “good” passwords", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 550)
+
+                if buttonD.collidepoint((mx,my)):
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("File is way too large", pygame.font.SysFont("Arial", 16), (105,105,105), self.screen, 10, 750)
+
+                    if click:
+
+                        self.incorrectScreen("https://www.enzoic.com/password-cracking-dictionaries/ ")
+
+                        round += 1
+
+                else:
+
+                    pygame.draw.rect(self.screen, (15, 15, 15), buttonD)
+                    self.draw_text("File is way too large", pygame.font.SysFont("Arial", 16), (255, 255, 255), self.screen, 10, 750)
+
+                #Initialize the click variable to be false again.
+                click = False
+
+            gameEnd = False
+
+            if (round > 12 and score >= 10):
+                self.draw_text("You win! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
+                self.draw_text("Press ESC to go to the next level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
+
+                for event in pygame.event.get():
+
+                    #If we escape, return back to the game
+                    if event.type == pygame.KEYDOWN:
+                        
+                        if event.key == pygame.K_ESCAPE:
+
+                            runningQuiz = False
+                            gameEnd = True
+                            return score
+            
+            elif (round > 12 and score < 10):
+                self.draw_text("You Lose! Your score is " + str(score) + " out of 10", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 350)
+                self.draw_text("Press ESC to go to repeat the level", pygame.font.SysFont("Arial", 25), 	(255,255,255), self.screen, 10, 380)
+
+                for event in pygame.event.get():
+
+                    #If we escape, return back to the game
+                    if event.type == pygame.KEYDOWN:
+                        
+                        if event.key == pygame.K_ESCAPE:
+
+                            runningQuiz = False
+                            gameEnd = True
+                            return score
+                
+
+            click = False
+
+            
+
+            if round > 12 and gameEnd == True:
                 return score
 
             pygame.display.update()
@@ -2758,6 +3770,14 @@ class Game:
         self.map[self.player.position[1]][self.player.position[0] - 1] == 'B' or 
         self.map[self.player.position[1] + 1][self.player.position[0]] == 'B' or 
         self.map[self.player.position[1] - 1][self.player.position[0]] == 'B'):
+        
+            print(self.map[self.player.position[1]][self.player.position[0]])
+            return True
+
+        if (self.map[self.player.position[1]][self.player.position[0] + 1] == 'P' or 
+        self.map[self.player.position[1]][self.player.position[0] - 1] == 'P' or 
+        self.map[self.player.position[1] + 1][self.player.position[0]] == 'P' or 
+        self.map[self.player.position[1] - 1][self.player.position[0]] == 'P'):
         
             print(self.map[self.player.position[1]][self.player.position[0]])
             return True
@@ -2833,10 +3853,18 @@ class Game:
                             
                             break
 
-                        if self.level == 8:
+                        if self.level == 2:
                             result = self.startQuizThree()
 
-                            if result >= 2:
+                            if result >= 8:
+                                self.level += 1
+
+                            break
+
+                        if self.level == 3:
+                            result = self.startQuizFour()
+
+                            if result >= 10:
                                 self.winScreen()
 
                             break
@@ -2976,6 +4004,10 @@ map_tile_image = {
     #Level three images
     "C" : pygame.transform.scale(pygame.image.load("imgs/red1Tile.png"), (config.SCALE, config.SCALE)),
     "V" : pygame.transform.scale(pygame.image.load("imgs/rock3Tile.png"), (config.SCALE, config.SCALE)), 
-    "B" : pygame.transform.scale(pygame.image.load("imgs/boss3Tile.png"),(config.SCALE, config.SCALE))
+    "B" : pygame.transform.scale(pygame.image.load("imgs/boss3Tile.png"),(config.SCALE, config.SCALE)),
+
+    #Level four images
+    "P" : pygame.transform.scale(pygame.image.load("imgs/fbossTile.png"), (config.SCALE, config.SCALE)),
+    "O" : pygame.transform.scale(pygame.image.load("imgs/fbossGrass.png"), (config.SCALE, config.SCALE))
 
 }
