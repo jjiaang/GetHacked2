@@ -18,7 +18,7 @@ Install [Python 3](https://www.python.org/downloads/) and install [pygame](https
   
 Make sure all files are in the same directory, and then run the following code below.
 ```
-python game.py
+python main.py
 ```
 
 
